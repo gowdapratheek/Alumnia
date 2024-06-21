@@ -17,7 +17,7 @@ function Header() {
         </div>
 
         <div className="w-[38vw] h-[12vh] absolute right-[1%] bg-[#151616] border-[#98F2F5] border-t-[1px] flex justify-center items-center rounded-tl-[16px] rounded-tr-[16px] cursor-pointer">
-          <a href="/log" className="cursor-pointer">
+          <a href="/login" className="cursor-pointer">
             <p className="hover:text-[#DEE6EF] hover:border-[#DEE6EF] text-[#98F2F5] border-2 border-[#65bfe1]	rounded-full	p-2 lg:p-2 text-[0.8rem] lg:text-[1rem] cursor-pointer">
               Login/Signup
             </p>

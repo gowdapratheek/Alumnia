@@ -38,7 +38,7 @@ function SignUp() {
                       fontWeight: 900,
                     }}
                   >
-                    Domazo
+                    Alumnia
                   </span>
                 </h1>
                 <h3>Sign Up</h3>

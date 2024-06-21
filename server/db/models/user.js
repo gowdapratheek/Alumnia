@@ -1,7 +1,6 @@
 "use strict";
 const { Model, Sequelize } = require("sequelize");
 const sequelize = require("../../config/database");
-const { modelNames } = require("mongoose");
 module.exports = sequelize.define(
   "user",
   {

@@ -47,13 +47,6 @@ const login = async (req, res, next) => {
     });
   }
 
-//   if (password !== user.password) {
-//     return res.status(404).json({
-//       status: "fail",
-//       message: "Invalid email or password",
-//     });
-//   }
-
    return res.status(201).json({
      status: "success",
      message: "login success",
