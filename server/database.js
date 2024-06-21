@@ -1,27 +1,26 @@
-// database.js
-const { Sequelize } = require("sequelize");
+import { Sequelize } from "sequelize";
+import { alumniModel } from "./models/alumni.js";
 
-// Initialize Sequelize with your PostgreSQL connection string
-const sequelize = new Sequelize(
-  "postgres://postgres:Pra@example.com:5432/Alumnia",
-  {
+export const connection = async () => {
+  const sequelize = new Sequelize("Alumnia", "postgres", "Prathi@psql", {
+    host: "localhost",
     dialect: "postgres",
-    protocol: "postgres",
-    logging: false, // disable logging; default: console.log
-    // dialectOptions: {
-    //   ssl: true, // uncomment this if you need SSL
-    // }
-  }
-);
+  });
 
-// Test the connection
-(async () => {
+  let Alumni=null;
+
   try {
     await sequelize.authenticate();
     console.log("Connection has been established successfully.");
+    Alumni = alumniModel(sequelize);
+    await sequelize.sync();
+    console.log("Table created successfully.");
   } catch (error) {
     console.error("Unable to connect to the database:", error);
   }
-})();
+};
 
-module.exports = sequelize;
+const sequelize = new Sequelize("database", "username", "password", {
+  host: "localhost",
+  dialect: "postgres",
+});
