@@ -30,27 +30,35 @@ const signup = async (req, res, next) => {
 };
 
 const login = async (req, res, next) => {
-  const { email, password } = req.body;
+  const { usermail, password } = req.body;
 
-  if (!email || !password) {
-    return res.status(404).json({
-      status: "fail",
-      message: "please enter valid email and password",
-    });
+  try {
+    console.log("Data received from frontend:", usermail, password);
+    res.json({ success: true, message: "Login successful" });
+  } catch (error) {
+    console.error("Error occurred during login:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
 
-  const result = await user.findOne({ where: { email } });
-  if (!result) {
-    return res.status(404).json({
-      status: "fail",
-      message: "Invalid email or password",
-    });
-  }
+  // if (!email || !password) {
+  //   return res.status(404).json({
+  //     status: false,
+  //     message: "please enter valid email and password",
+  //   });
+  // }
 
-   return res.status(201).json({
-     status: "success",
-     message: "login success",
-   });
+  // const result = await user.findOne({ where: { email } });
+  // if (!result) {
+  //   return res.status(404).json({
+  //     status: false,
+  //     message: "Invalid email or password",
+  //   });
+  // }
+
+  //  return res.status(201).json({
+  //    status: true,
+  //    message: "login success",
+  //  });
 };
 
-module.exports = { signup,login };
+module.exports = { signup, login };

@@ -5,20 +5,16 @@ import Header from "../components/Header";
 
 function Login() {
   const [username, setUsername] = useState("");
+  const [usermail, setUsermail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const login = () => {
-    const data = { username: username, password: password };
+    const data = { username: username, usermail: usermail, password: password };
     axios
-      .post("http://localhost:3000/login", data)
+      .post("http://localhost:3000/api/v1/auth/login", data)
       .then((response) => {
-        if (response.data.success) {
-          navigate("/");
-          localStorage.setItem("username", username);
-        } else {
-          alert("Login failed");
-        }
+         console.log("Response from backend:", response.data);
       })
       .catch((error) => {
         console.error("Error occurred during login:", error);
@@ -36,13 +32,13 @@ function Login() {
 
           <div className="bg-white h-[8vh] w-[40vw] rounded-[10px] flex text-black justify-center items-center text-[1rem]">
             <div className="p-1">
-              <a href="/signup" className="font-medium">
+              <a href="/signup" className="font-medium cursor-pointer">
                 Sign Up
               </a>
             </div>
 
             <div className="bg-[#027AFF] rounded-[6px] text-white w-[20vw] h-[vh] font-medium p-2">
-              <div className="text-center">
+              <div className="text-center cursor-pointer">
                 <a href="/login">Login</a>
               </div>
             </div>
@@ -65,10 +61,10 @@ function Login() {
               <input
                 className="w-[60vw] h-[7vh] bg-transparent border-2 my-4 border-[#434343] p-2 rounded-[10px]"
                 id="Mail address"
-                type="mail"
+                type="email"
                 placeholder="Mail address"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={usermail}
+                onChange={(e) => setUsermail(e.target.value)}
                 required
               />
             </div>

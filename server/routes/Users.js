@@ -12,17 +12,17 @@ router.post("/", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  const { username, password } = req.body;
+  const { username, usermail, password } = req.body;
 
-  const user = await user.findOne({ where: { username: username } });
+  const user = await user.findOne({ where: { usermail: usermail } });
 
   if (!user) {
     return res.json({ success: false, error: "User Doesn't Exist" });
   }
 
-  if (password !== user.password) {
-    return res.json({ success: false, error: "Wrong Username And Password Combination" });
-  }
+  // if (password !== user.password) {
+  //   return res.json({ success: false, error: "Wrong Username And Password Combination" });
+  // }
 
   res.json({ success: true, message: "Login successful" });
 });
