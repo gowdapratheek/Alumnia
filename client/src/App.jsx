@@ -8,13 +8,13 @@ import Header from "./components/Header";
 function App() {
   return (
     <div className="App">
-        <Routes>
-          <Route path="/header" element={<Header />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/*" element={<Err />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-        </Routes>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/header" element={<Header />} />
+        <Route element={<Err />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
     </div>
   );
 }
