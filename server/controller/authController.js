@@ -31,34 +31,12 @@ const signup = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   const { usermail, password } = req.body;
-
-  try {
-    console.log("Data received from frontend:", usermail, password);
-    res.json({ success: true, message: "Login successful" });
-  } catch (error) {
-    console.error("Error occurred during login:", error);
-    res.status(500).json({ success: false, message: "Internal server error" });
-  }
-
-  // if (!email || !password) {
-  //   return res.status(404).json({
-  //     status: false,
-  //     message: "please enter valid email and password",
-  //   });
-  // }
-
-  // const result = await user.findOne({ where: { email } });
-  // if (!result) {
-  //   return res.status(404).json({
-  //     status: false,
-  //     message: "Invalid email or password",
-  //   });
-  // }
-
-  //  return res.status(201).json({
-  //    status: true,
-  //    message: "login success",
-  //  });
+  const data = {
+    usermail: usermail,
+    password: password,
+  };
+  console.log("Data received from frontend:", data);
+  res.json({ success: true, message: "Logins successful" });
 };
 
 module.exports = { signup, login };

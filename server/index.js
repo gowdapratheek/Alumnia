@@ -1,13 +1,14 @@
 const express = require("express");
 const cors = require("cors");
-const authRouter = require("./routes/authRoute"); // Adjust the path if necessary
+const authRouter = require("./routes/authRoute");
 const app = express();
 const port = 3000;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use("/api/v1/auth", authRouter);
+app.use("/api/auth", authRouter);
 
 app.use("/sam", (req, res) => {
   res.status(404).json({

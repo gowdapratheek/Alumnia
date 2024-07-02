@@ -1,26 +1,22 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [usermail, setUsermail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
-  const login = () => {
-    const data = { username: username, usermail: usermail, password: password };
-    axios
-      .post("http://localhost:3000/api/v1/auth/login", data)
-      .then((response) => {
-         console.log("Response from backend:", response.data);
-      })
-      .catch((error) => {
-        console.error("Error occurred during login:", error);
-      });
+  const login = async () => {
+    const data = { username, usermail, password };
+    const response = await axios.post(
+      "http://localhost:3000/api/auth/login",
+      data
+    );
+    if (response) {
+      console.log(data);
+    }
   };
-
   return (
     <>
       <Header />
@@ -44,42 +40,39 @@ function Login() {
             </div>
           </div>
 
-          <form className="h-[15vh] w-[60vw] flex flex-col justify-evenly mt-4">
-            <div>
-              <input
-                className="w-[60vw] h-[7vh] bg-transparent border-2 my-4 border-[#434343] p-2 rounded-[10px]"
-                id="Name"
-                type="text"
-                placeholder="Name"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-            </div>
+          <form
+            className="h-[15vh] w-[60vw] flex flex-col justify-evenly mt-4"
+            action="POST"
+          >
+            <input
+              className="w-[60vw] h-[7vh] bg-transparent border-2 my-4 border-[#434343] p-2 rounded-[10px]"
+              id="Name"
+              type="text"
+              placeholder="Name"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
 
-            <div>
-              <input
-                className="w-[60vw] h-[7vh] bg-transparent border-2 my-4 border-[#434343] p-2 rounded-[10px]"
-                id="Mail address"
-                type="email"
-                placeholder="Mail address"
-                value={usermail}
-                onChange={(e) => setUsermail(e.target.value)}
-                required
-              />
-            </div>
+            <input
+              className="w-[60vw] h-[7vh] bg-transparent border-2 my-4 border-[#434343] p-2 rounded-[10px]"
+              id="Mail address"
+              type="email"
+              placeholder="Mail address"
+              value={usermail}
+              onChange={(e) => setUsermail(e.target.value)}
+              required
+            />
 
-            <div className="input-box">
-              <input
-                className="w-[60vw] h-[7vh] bg-transparent border-2 my-4 border-[#434343] p-2 rounded-[10px]"
-                id="password"
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
+            <input
+              className="w-[60vw] h-[7vh] bg-transparent border-2 my-4 border-[#434343] p-2 rounded-[10px]"
+              id="password"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
 
             <div className="w-[60vw] flex justify-center">
               <button
