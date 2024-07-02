@@ -1,8 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import Header from "../components/Header";
+import { useNavigate } from "react-router-dom";
+
 
 function Login() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [usermail, setUsermail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,6 +18,7 @@ function Login() {
     );
     if (response) {
       console.log(data);
+      navigate("/");
     }
   };
   return (
