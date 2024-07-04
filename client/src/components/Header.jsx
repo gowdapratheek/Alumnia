@@ -8,7 +8,7 @@ function Header() {
           <ul>
             <a
               href="/"
-              className="hover:text-[#DEE6EF] text-[#98F2F5] cursor-pointer"
+              className="hover:text-[#DEE6EF] text-[#98F2F5] cursor-pointer font-semibold tracking-wide"
             >
               <li>Home</li>
             </a>

@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Err from "./pages/Err";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
+import Who from "./pages/Who";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route path="/header" element={<Header />} />
         <Route path="/*" element={<Err />} />
+        <Route path="/who" element={<Who />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
