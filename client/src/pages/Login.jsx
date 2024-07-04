@@ -11,16 +11,24 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const login = async () => {
-    const data = { username, usermail, password };
-    const response = await axios.post(
-      "http://localhost:3000/api/auth/login",
-      data
-    );
-    if (response) {
-      console.log(data);
-      navigate("/");
+    const data = { usermail, password };
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/auth/login",
+        data
+      );
+
+      if (response.data.success) {
+        navigate("/");
+      } else {
+        alert("Login failed: " + response.data.message);
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("An error occurred during login. Please try again.");
     }
   };
+
   return (
     <>
       <Header />

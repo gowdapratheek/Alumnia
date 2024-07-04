@@ -28,15 +28,46 @@ const signup = async (req, res, next) => {
     data: newUser,
   });
 };
-
 const login = async (req, res, next) => {
   const { usermail, password } = req.body;
-  const data = {
-    usermail: usermail,
-    password: password,
-  };
-  console.log("Data received from frontend:", data);
-  res.json({ success: true, message: "Logins successful" });
-};
 
+  try {
+    const result = await user.findOne({ where: { email: usermail } });
+    console.log(usermail, password);
+    console.log(result);
+
+    if (!result) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Invalid email or password",
+      });
+    }
+    console.log(usermail, password);
+
+    // console.log(result.password);
+    // console.log(password);
+    // // If the password does not match, return a 401 error
+    // if (password !== result.password) {
+    //   return res.status(401).json({
+    //     status: "fail",
+    //     message: "Invalid email or password",
+    //   });
+    // }
+    // console.log(usermail, password);
+
+    // console.log(result);
+
+    console.log("Data received from frontend:", usermail, password);
+    return res.status(200).json({
+      success: true,
+      message: "Login successful",
+    });
+  } catch (error) {
+    console.error("Error during login:", error);
+    return res.status(500).json({
+      status: "error",
+      message: "An error occurred during login. Please try again later.",
+    });
+  }
+};
 module.exports = { signup, login };
