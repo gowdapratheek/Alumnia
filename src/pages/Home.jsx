@@ -1,7 +1,13 @@
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthContext/AuthContext";
 import Faq from "./Faqs";
 import Footer from "../components/Footer";
+
 function Home() {
+  const { loggedIn, logout } = useContext(AuthContext);
+  console.log(loggedIn);
+
   return (
     <>
       <div className="flex mt-[1%]">
@@ -20,11 +26,20 @@ function Home() {
         </div>
 
         <div className="w-[23vw] h-[12vh] absolute right-[1%] border-[1px] flex justify-center items-center cursor-pointer">
-          <Link to="/login" className="cursor-pointer">
-            <p className="hover:text-[#DEE6EF] hover:border-[#DEE6EF] border-2 border-[#65bfe1]	rounded-[10PX]	p-2 lg:p-2 text-[0.8rem] lg:text-[1rem] cursor-pointer">
-              Login/Signup
+          {loggedIn ? (
+            <p
+              className="hover:text-[#DEE6EF] hover:border-[#DEE6EF] border-2 border-[#65bfe1] rounded-[10PX] p-2 lg:p-2 text-[0.8rem] lg:text-[1rem] cursor-pointer"
+              onClick={logout}
+            >
+              Logout
             </p>
-          </Link>
+          ) : (
+            <Link to="/login" className="cursor-pointer">
+              <p className="hover:text-[#DEE6EF] hover:border-[#DEE6EF] border-2 border-[#65bfe1] rounded-[10PX] p-2 lg:p-2 text-[0.8rem] lg:text-[1rem] cursor-pointer">
+                Login/Signup
+              </p>
+            </Link>
+          )}
         </div>
       </div>
 
@@ -35,7 +50,7 @@ function Home() {
           <h1 className="text-[#027AFF] font-bold text-[5rem] ">Alumnia</h1>
           <p className="w-[70vw] lg:w-[30vw]">
             Welcome to our alumnisphere website Reconnect, network, and thrive
-            with us as we celebrate our institution&aposs legacy together.
+            with us as we celebrate our institution&apos;s legacy together.
           </p>
         </div>
 
