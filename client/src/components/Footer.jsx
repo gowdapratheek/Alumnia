@@ -1,65 +1,67 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
   return (
     <>
       <div className="h-[100vh] w-[98vw] flex flex-col justify-end items-center overflow-x-clip">
         <div className="w-[96vw] h-[30vh] lg:h-[25vh] mx-[1vw] my-[3vh]  border-black border-[1px] z-50 rounded-[10px] flex flex-col justify-end">
           <div className="flex items-center justify-around h-[27vh]">
-            <a href="/" className="cursor-pointer ">
+            <Link href="/" className="cursor-pointer ">
               <h1 className="text-2xl font-bold">ALUMNIA</h1>
-            </a>
+            </Link>
 
             <ul className="relative top-[-3vh] py-5">
               <li className="py-1">
-                <a
+                <Link
                   href="/"
                   className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide "
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/faq"
                   className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
                 >
                   Faq&apos;s
-                </a>
+                </Link>
               </li>
             </ul>
 
             <ul>
               <li className="py-1">
-                <a
+                <Link
                   href="/events"
                   className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
                 >
                   Events
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/resources"
                   className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
                 >
                   Resources
-                </a>
+                </Link>
               </li>
               <li className="py-1">
-                <a
+                <Link
                   href="/about"
                   className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
                 >
                   About us
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a
+                <Link
                   href="/contact"
                   className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
                 >
                   Contact us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
