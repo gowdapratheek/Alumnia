@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 
 function Home() {
   const { loggedIn, logout } = useContext(AuthContext);
+
   console.log(loggedIn);
 
   return (
