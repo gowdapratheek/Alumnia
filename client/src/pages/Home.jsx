@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import Faq from "./Faqs";
+import Footer from "../components/Footer";
 function Home() {
   return (
     <>
@@ -44,7 +46,10 @@ function Home() {
         </div>
       </div>
 
-      <div className="absolute top-[105vh]">hi</div>
+      <div className="absolute top-[105vh]">
+        <Faq />
+      </div>
+      <Footer />
     </>
   );
 }

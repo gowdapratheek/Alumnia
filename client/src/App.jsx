@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import EventOptions from "./pages/EventOptions";
 import PreviousEvents from "./pages/PreviousEvents";
 import UploadEvent from "./pages/UploadEvent";
+import Faqs from "./pages/Faqs";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/who" element={<Who />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/faq" element={<Faqs />} />
         <Route path="/events" element={<EventOptions />} />
         <Route path="/uploadEvent" element={<UploadEvent />} />
         <Route path="/previousEvents" element={<PreviousEvents />} />
