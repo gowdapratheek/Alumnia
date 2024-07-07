@@ -32,7 +32,7 @@ function Login() {
     <>
       <Header />
       <div className="h-[90vh] w-[100vw] absolute top-[8vh] lg:top-[7vh] flex justify-center items-center">
-        <div className="h-[80vh] lg:h-[75vh] w-[80vw] lg:w-[40vw] border-2 border-[#98F2F5] rounded-[15px] flex flex-col  items-center">
+        <div className="h-[65vh] lg:h-[60vh] w-[80vw] lg:w-[40vw] border-2 border-[#98F2F5] rounded-[15px] flex flex-col  items-center">
           <h1 className=" text-[2.25rem] font-extrabold tracking-widest uppercase my-2">
             Alumnia
           </h1>
@@ -94,7 +94,7 @@ function Login() {
                 Send Code
               </button>
             </div>
-            <div className="flex items-center">
+            {/* <div className="flex items-center">
               <div className="flex-grow border-t border-gray-400"></div>
               <span className="mx-2 text-gray-400">OR</span>
               <div className="flex-grow border-t border-gray-400"></div>
@@ -105,7 +105,7 @@ function Login() {
                 <img src="/google-logo.png" />
                 <p className="text-black ml-5">Continue with google</p>
               </div>
-            </div>
+            </div> */}
           </form>
         </div>
       </div>

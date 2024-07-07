@@ -5,7 +5,7 @@ function Footer() {
         <div className="w-[96vw] h-[30vh] lg:h-[25vh] mx-[1vw] my-[3vh]  border-black border-[1px] z-50 rounded-[10px] flex flex-col justify-end">
           <div className="flex items-center justify-around h-[27vh]">
             <a href="/" className="cursor-pointer ">
-              <h1 className="text-2xl font-bold">Alumnia</h1>
+              <h1 className="text-2xl font-bold">ALUMNIA</h1>
             </a>
 
             <ul className="relative top-[-3vh] py-5">
@@ -30,7 +30,7 @@ function Footer() {
             <ul>
               <li className="py-1">
                 <a
-                  href="/"
+                  href="/events"
                   className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
                 >
                   Events
@@ -38,7 +38,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="/faq"
+                  href="/resources"
                   className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
                 >
                   Resources
@@ -46,7 +46,7 @@ function Footer() {
               </li>
               <li className="py-1">
                 <a
-                  href="/faq"
+                  href="/about"
                   className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
                 >
                   About us
@@ -55,7 +55,7 @@ function Footer() {
 
               <li>
                 <a
-                  href="/faq"
+                  href="/contact"
                   className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
                 >
                   Contact us
