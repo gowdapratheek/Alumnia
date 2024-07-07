@@ -12,7 +12,12 @@ import UploadEvent from "./pages/UploadEvent";
 import Faqs from "./pages/Faqs";
 import { AuthProvider } from "./AuthContext/AuthContext";
 
+// import { AuthContext } from "./AuthContext/AuthContext";
+// import { useContext } from "react";
+
 function App() {
+  // const { loggedIn } = useContext(AuthContext);
+  // console.log("user", loggedIn);
   return (
     <div className="App">
       <AuthProvider>

@@ -2,6 +2,7 @@
 
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
@@ -12,6 +13,8 @@ export const AuthProvider = ({ children }) => {
   const [password, setPassword] = useState("");
   const [otp, setOtp] = useState("");
   const [otpSent, setOtpSent] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedEmail = localStorage.getItem("userEmail");
@@ -60,6 +63,7 @@ export const AuthProvider = ({ children }) => {
         setUsermail(email);
         setLoggedIn(true);
         localStorage.setItem("userEmail", email);
+        navigate("/who");
       } else {
         alert("Signup failed: " + response.data.message);
       }

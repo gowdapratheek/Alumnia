@@ -27,7 +27,7 @@ function Signup() {
 
   const handleSignup = async () => {
     await signup();
-    navigate("/");
+    navigate("/who");
   };
 
   return (
