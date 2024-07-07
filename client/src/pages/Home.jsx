@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-function Header() {
+function Home() {
   return (
     <>
       <div className="flex mt-[1%]">
-        <div className="fixed w-[58vw] left-[1%] bg-[#292929] border-[#98F2F5] border-[1px] h-[10vh] flex items-center justify-around z-50 rounded-[10px] ">
+        <div className="fixed w-[73vw] left-[1%] bg-[#292929] border-[#98F2F5] border-[1px] h-[10vh] flex items-center justify-around z-50 rounded-[10px] ">
           <a href="/" className="cursor-pointer ">
             <img src="/alum-logo.png" alt="" className="h-[2rem] flex" />
           </a>
@@ -17,9 +17,9 @@ function Header() {
           </ul>
         </div>
 
-        <div className="w-[38vw] h-[12vh] absolute right-[1%] bg-[#151616] border-[#98F2F5] border-t-[1px] flex justify-center items-center rounded-tl-[16px] rounded-tr-[16px] cursor-pointer">
+        <div className="w-[23vw] h-[12vh] absolute right-[1%] border-[1px] flex justify-center items-center cursor-pointer">
           <Link to="/login" className="cursor-pointer">
-            <p className="hover:text-[#DEE6EF] hover:border-[#DEE6EF] text-[#98F2F5] border-2 border-[#65bfe1]	rounded-full	p-2 lg:p-2 text-[0.8rem] lg:text-[1rem] cursor-pointer">
+            <p className="hover:text-[#DEE6EF] hover:border-[#DEE6EF] border-2 border-[#65bfe1]	rounded-[10PX]	p-2 lg:p-2 text-[0.8rem] lg:text-[1rem] cursor-pointer">
               Login/Signup
             </p>
           </Link>
@@ -38,9 +38,9 @@ function Header() {
         </div>
 
         <div className="grid grid-cols-2 gap-2 w-[90vw] lg:w-[40vw] h-[50vh] lg:h-[60vh] self-center">
-          <div className="bg-gray-200 rounded-lg"></div>
-          <div className="bg-gray-200 rounded-lg row-span-2"></div>
-          <div className="bg-gray-200 rounded-lg "></div>
+          <div className="bg-black rounded-lg"></div>
+          <div className="bg-black rounded-lg row-span-2"></div>
+          <div className="bg-black rounded-lg "></div>
         </div>
       </div>
 
@@ -49,4 +49,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Home;

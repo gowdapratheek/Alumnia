@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from "axios";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
-import Wave from "../components/Wave";
 
 function Login() {
   const navigate = useNavigate();
@@ -110,7 +109,6 @@ function Login() {
           </form>
         </div>
       </div>
-      <Wave />
     </>
   );
 }

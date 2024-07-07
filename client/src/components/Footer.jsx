@@ -2,27 +2,35 @@ function Footer() {
   return (
     <>
       <div className="h-[100vh] w-[100vw] flex flex-col justify-end">
-        <div className="w-[98vw] h-[20vh] mx-[1vw] my-[3vh] bg-[#292929] border-[#98F2F5] border-[1px] z-50 rounded-[10px] ">
-          <div className="flex items-center justify-around">
+        <div className="w-[98vw] h-[15vh] mx-[1vw] my-[3vh]  border-black border-[1px] z-50 rounded-[10px] flex flex-col justify-end">
+          <div className="flex items-center justify-around h-[12vh]">
             <a href="/" className="cursor-pointer ">
-              <img src="/alum-logo.png" alt="" className="h-[2rem] flex" />
+              <h1 className="text-2xl fon">Alumnia</h1>
             </a>
 
             <ul>
               <li>
                 <a
                   href="/"
-                  className="hover:text-[#DEE6EF] text-[#98F2F5] cursor-pointer font-semibold tracking-wide"
+                  className="hover:text-[#DEE6EF] cursor-pointer font-semibold tracking-wide"
                 >
                   Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/"
+                  className="hover:text-[#DEE6EF] cursor-pointer font-semibold tracking-wide"
+                >
+                  Faq&apos;s
                 </a>
               </li>
             </ul>
           </div>
 
-          <div className="h-[5vh] w-[98vw] border-2 ">
-            <div className=" flex justify-center items-center">
-              <p className="flex self-center"> &copy;2024 Alumni - All Rights Reserved</p>
+          <div className=" border-t-[1px] border-gray-400 bg-[#595656] rounded-b-[10px]">
+            <div className="h-[5vh] w-[98vw] flex items-center justify-center">
+              <p className="">&copy;2024 Alumni - All Rights Reserved.</p>
             </div>
           </div>
         </div>

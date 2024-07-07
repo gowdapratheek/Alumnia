@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from "axios";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
-import Wave from "../components/Wave";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -89,7 +88,6 @@ function SignUp() {
           </form>
         </div>
       </div>
-      <Wave />
     </>
   );
 }
