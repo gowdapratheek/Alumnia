@@ -6,14 +6,14 @@ function Footer() {
       <div className="h-[100vh] w-[98vw] flex flex-col justify-end items-center overflow-x-clip">
         <div className="w-[96vw] h-[30vh] lg:h-[25vh] mx-[1vw] my-[3vh]  border-black border-[1px] z-50 rounded-[10px] flex flex-col justify-end">
           <div className="flex items-center justify-around h-[27vh]">
-            <Link href="/" className="cursor-pointer ">
+            <Link to="/" className="cursor-pointer ">
               <h1 className="text-2xl font-bold">ALUMNIA</h1>
             </Link>
 
             <ul className="relative top-[-3vh] py-5">
               <li className="py-1">
                 <Link
-                  href="/"
+                  to="/"
                   className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide "
                 >
                   Home
@@ -21,7 +21,7 @@ function Footer() {
               </li>
               <li>
                 <Link
-                  href="/faq"
+                  to="/faq"
                   className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
                 >
                   Faq&apos;s
@@ -32,7 +32,7 @@ function Footer() {
             <ul>
               <li className="py-1">
                 <Link
-                  href="/events"
+                  to="/events"
                   className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
                 >
                   Events
@@ -40,7 +40,7 @@ function Footer() {
               </li>
               <li>
                 <Link
-                  href="/resources"
+                  to="/resources"
                   className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
                 >
                   Resources
@@ -48,7 +48,7 @@ function Footer() {
               </li>
               <li className="py-1">
                 <Link
-                  href="/about"
+                  to="/about"
                   className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
                 >
                   About us
@@ -57,7 +57,7 @@ function Footer() {
 
               <li>
                 <Link
-                  href="/contact"
+                  to="/contact"
                   className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
                 >
                   Contact us
