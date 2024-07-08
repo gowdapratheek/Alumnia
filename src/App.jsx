@@ -19,7 +19,17 @@ function App() {
   return (
     <div className="App">
       <AuthProvider>
-        <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/header" element={<Header />} />

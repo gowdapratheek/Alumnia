@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../AuthContext/AuthContext";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
@@ -11,9 +11,22 @@ function Login() {
   const { usermail, password, setUsermail, setPassword, login } =
     useContext(AuthContext);
   const navigate = useNavigate();
+  const [emailError, setEmailError] = useState("");
+
+  const validateEmail = (email) => {
+    // Regular expression for validating an email address
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    if (!validateEmail(usermail)) {
+      setEmailError("Please enter a valid email.");
+      return;
+    }
+    setEmailError(""); // Clear previous error if any
+
     try {
       await login();
       toast.success("Login successful!");
@@ -48,14 +61,21 @@ function Login() {
             onSubmit={handleLogin}
           >
             <input
-              className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
+              className={`bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%] ${
+                emailError ? "border-red-500" : ""
+              }`}
               id="Mail address"
               type="email"
               placeholder="Mail address"
               value={usermail}
-              onChange={(e) => setUsermail(e.target.value)}
+              onChange={(e) => {
+                setUsermail(e.target.value);
+                setEmailError("");
+              }}
               required
             />
+            {emailError && <p className="text-red-500 text-sm mt-[-15px] mb-[10px] ml-[-40%]">{emailError}</p>}
+
             <input
               className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
               id="password"

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthContext/AuthContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function ForgetPassword() {
@@ -13,19 +13,30 @@ function ForgetPassword() {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [stage, setStage] = useState("sendOTP");
+  const [loading, setLoading] = useState(false); // For loading state
   const navigate = useNavigate();
 
   const handleSendOTP = async () => {
     try {
+      setLoading(true); // Set loading state
       const response = await sendForgetPasswordOTP(email);
       if (response.success) {
         toast.success("OTP sent to your email.");
         setStage("verifyOTP");
       } else {
         toast.error(response.message);
+        // Optionally handle specific messages here
+        if (response.message === "Email not registered") {
+          // Handle scenario where email is not registered
+          // For example, display a different message or reset form fields
+          setEmail(""); // Reset email field
+        }
       }
     } catch (error) {
       toast.error("Error sending OTP. Please try again.");
+      console.error("Error sending OTP:", error);
+    } finally {
+      setLoading(false); // Reset loading state
     }
   };
 
@@ -35,15 +46,23 @@ function ForgetPassword() {
       return;
     }
     try {
+      setLoading(true); // Set loading state
       const response = await changePassword(email, otp, newPassword);
       if (response.success) {
         toast.success("Password changed successfully!");
-        navigate("/login");
+        setStage("done");
+        // Optionally reset form fields or navigate to login after a delay
+        setTimeout(() => {
+          navigate("/login");
+        }, 3000);
       } else {
         toast.error(response.message);
       }
     } catch (error) {
       toast.error("Error changing password. Please try again.");
+      console.error("Error changing password:", error);
+    } finally {
+      setLoading(false); // Reset loading state
     }
   };
 
@@ -66,10 +85,13 @@ function ForgetPassword() {
                 required
               />
               <button
-                className="bg-[#308e50] hover:bg-[#1f6237] text-white p-3 rounded-lg mt-2 transition duration-200 w-[60%] lg:w-[50%] text-center"
+                className={`bg-[#308e50] hover:bg-[#1f6237] text-white p-3 rounded-lg mt-2 transition duration-200 w-[60%] lg:w-[50%] text-center ${
+                  loading ? "opacity-50 pointer-events-none" : ""
+                }`}
                 onClick={handleSendOTP}
+                disabled={loading} // Disable button during loading
               >
-                Send OTP
+                {loading ? "Sending OTP..." : "Send OTP"}
               </button>
             </>
           )}
@@ -104,18 +126,20 @@ function ForgetPassword() {
                 required
               />
               <button
-                className="bg-[#308e50] hover:bg-[#1f6237] text-white p-3 rounded-lg mt-2 transition duration-200 w-[60%] lg:w-[50%] text-center"
+                className={`bg-[#308e50] hover:bg-[#1f6237] text-white p-3 rounded-lg mt-2 transition duration-200 w-[60%] lg:w-[50%] text-center ${
+                  loading ? "opacity-50 pointer-events-none" : ""
+                }`}
                 onClick={handleChangePassword}
+                disabled={loading} // Disable button during loading
               >
-                Change Password
+                {loading ? "Changing Password..." : "Change Password"}
               </button>
             </>
           )}
-
-          {stage === "done" && <p>Password changed successfully!</p>}
         </div>
       </div>
       <Footer />
+      <ToastContainer /> {/* Ensure ToastContainer is rendered */}
     </>
   );
 }

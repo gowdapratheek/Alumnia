@@ -81,7 +81,7 @@ export const AuthProvider = ({ children }) => {
 
       if (response.data.success) {
         setOtpSent(true);
-        alert("OTP sent successfully to your email.");
+        // alert("OTP sent successfully to your email.");
       } else {
         alert("Failed to send OTP: " + response.data.message);
       }
@@ -107,12 +107,17 @@ const sendForgetPasswordOTP = async (email) => {
       "http://localhost:5454/user/send-forget-password-otp",
       { email }
     );
+
     return response.data;
   } catch (error) {
+    if (error.response && error.response.status === 400) {
+      return error.response.data; // Return the error response data
+    }
     console.error("Error during OTP sending:", error);
     throw error;
   }
 };
+
 
 const changePassword = async (email, otp, newPassword) => {
   try {

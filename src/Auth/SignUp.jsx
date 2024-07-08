@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../AuthContext/AuthContext";
 import Header from "../components/Header";
-import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const {
@@ -19,11 +19,28 @@ function Signup() {
     otpSent,
     signup,
     sendRegisterOTP,
+    verifyOTP, // Function to verify OTP
   } = useContext(AuthContext);
-  const navigate = useNavigate();
+
+  const navigate = useNavigate;
+  const [emailError, setEmailError] = useState("");
+  const [otpError, setOtpError] = useState("");
+  const [otpVerified, setOtpVerified] = useState(false); // State to track OTP verification status
+
+  const validateEmail = (email) => {
+    // Regular expression for validating an email address
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
 
   const handleSendOTP = async (e) => {
     e.preventDefault();
+    if (!validateEmail(usermail)) {
+      setEmailError("Please enter a valid email.");
+      return;
+    }
+    setEmailError(""); // Clear previous email error if any
+
     try {
       await sendRegisterOTP();
       toast.success("OTP sent to your email.");
@@ -32,8 +49,31 @@ function Signup() {
     }
   };
 
+  const handleVerifyOTP = async (e) => {
+    e.preventDefault();
+    try {
+      const otpVerificationResult = await verifyOTP(otp);
+      if (otpVerificationResult) {
+        setOtpVerified(true);
+        toast.success("OTP verified successfully.");
+        setOtpError(""); // Clear OTP error on successful verification
+      } else {
+        setOtpError("Invalid OTP. Please enter correct OTP.");
+        setOtpVerified(false); // Ensure otpVerified is false on failed verification
+      }
+    } catch (error) {
+      toast.error("Error verifying OTP. Please try again.");
+      setOtpVerified(false); // Ensure otpVerified is false on error
+    }
+  };
+
   const handleSignup = async (e) => {
     e.preventDefault();
+    if (!otpVerified) {
+      setOtpError("Please verify OTP first.");
+      return;
+    }
+
     try {
       await signup();
       toast.success("Signup successful!");
@@ -69,12 +109,17 @@ function Signup() {
                 onSubmit={handleSendOTP}
               >
                 <input
-                  className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
+                  className={`bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%] ${
+                    emailError ? "border-red-500" : ""
+                  }`}
                   id="Name"
                   type="text"
                   placeholder="Name"
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                    setEmailError("");
+                  }}
                   required
                 />
                 <input
@@ -86,6 +131,11 @@ function Signup() {
                   onChange={(e) => setUsermail(e.target.value)}
                   required
                 />
+                {emailError && (
+                  <p className="text-red-500 text-sm mt-[-15px] mb-[10px] ml-[-40%]">
+                    {emailError}
+                  </p>
+                )}
 
                 <input
                   className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
@@ -111,7 +161,7 @@ function Signup() {
               </div>
               <form
                 className="w-full flex flex-col items-center"
-                onSubmit={handleSignup}
+                onSubmit={handleVerifyOTP}
               >
                 <input
                   className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[80%]"
@@ -122,13 +172,31 @@ function Signup() {
                   onChange={(e) => setOtp(e.target.value)}
                   required
                 />
+                {otpError && (
+                  <p className="text-red-500 text-sm mt-[-15px] mb-[10px] ml-[-40%]">
+                    {otpError}
+                  </p>
+                )}
                 <button
                   className="bg-[#027AFF] text-white p-3 rounded-lg w-[40%] mt-2 hover:bg-blue-700 transition duration-200 text-center"
                   type="submit"
                 >
-                  Sign Up
+                  Verify OTP
                 </button>
               </form>
+              {otpVerified && (
+                <form
+                  className="w-full flex flex-col items-center"
+                  onSubmit={handleSignup}
+                >
+                  <button
+                    className="bg-[#027AFF] text-white p-3 rounded-lg w-[40%] mt-2 hover:bg-blue-700 transition duration-200 text-center"
+                    type="submit"
+                  >
+                    Sign Up
+                  </button>
+                </form>
+              )}
             </>
           )}
         </div>
