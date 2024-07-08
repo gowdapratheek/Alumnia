@@ -54,7 +54,7 @@ function Login() {
               </Link>
             </div>
             <div className="bg-[#308e50] hover:bg-[#1f6237] rounded-[6px] text-white font-medium p-2 w-1/2 text-center cursor-pointer">
-              <a href="/login">Login</a>
+              <Link href="/login">Login</Link>
             </div>
           </div>
 

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthContext";
 import Header from "../components/Header";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -56,12 +56,12 @@ function Signup() {
             <>
               <div className="flex justify-between w-[60%] mb-6">
                 <div className="bg-[#308e50] hover:bg-[#1f6237] rounded-[6px] text-white font-medium p-2 w-1/2 mr-2 text-center cursor-pointer">
-                  <a href="/signup">Sign Up</a>
+                  <Link href="/signup">Sign Up</Link>
                 </div>
                 <div className="p-2 w-1/2 text-center cursor-pointer">
-                  <a href="/login" className="font-medium">
+                  <Link href="/login" className="font-medium">
                     Login
-                  </a>
+                  </Link>
                 </div>
               </div>
               <form

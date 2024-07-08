@@ -1,6 +1,7 @@
 import Faq from "./Faqs";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -22,18 +23,18 @@ function Home() {
               lasting connections.
             </p>
             <div className="mt-6">
-              <a
+              <Link
                 href="/signup"
                 className="bg-[#308e50] text-white px-4 py-2 rounded-lg mr-6"
               >
                 Register Now
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/"
                 className="bg-[#d4e4df] text-[#1e1e1e] px-4 py-2 rounded-lg"
               >
                 Learn more
-              </a>
+              </Link>
             </div>
           </div>
 
