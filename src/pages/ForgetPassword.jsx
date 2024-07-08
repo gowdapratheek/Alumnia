@@ -49,12 +49,10 @@ function ForgetPassword() {
       setLoading(true); // Set loading state
       const response = await changePassword(email, otp, newPassword);
       if (response.success) {
-        toast.success("Password changed successfully!");
-        setStage("done");
-        // Optionally reset form fields or navigate to login after a delay
-        setTimeout(() => {
-          navigate("/login");
-        }, 3000);
+        toast.success("Password changed successfully!", {
+          autoClose: 2000,
+          onClose: () => navigate("/login"),
+        });
       } else {
         toast.error(response.message);
       }
@@ -62,7 +60,7 @@ function ForgetPassword() {
       toast.error("Error changing password. Please try again.");
       console.error("Error changing password:", error);
     } finally {
-      setLoading(false); // Reset loading state
+      setLoading(false); 
     }
   };
 

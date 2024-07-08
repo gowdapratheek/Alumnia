@@ -29,8 +29,10 @@ function Login() {
 
     try {
       await login();
-      toast.success("Login successful!");
-      navigate("/");
+      toast.success("Login successful!", {
+        autoClose: 2000, 
+        onClose: () => navigate("/"),
+      });
     } catch (error) {
       toast.error("Login failed. Please check your credentials.");
     }
@@ -74,7 +76,11 @@ function Login() {
               }}
               required
             />
-            {emailError && <p className="text-red-500 text-sm mt-[-15px] mb-[10px] ml-[-40%]">{emailError}</p>}
+            {emailError && (
+              <p className="text-red-500 text-sm mt-[-15px] mb-[10px] ml-[-40%]">
+                {emailError}
+              </p>
+            )}
 
             <input
               className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
