@@ -64,10 +64,10 @@ function Header() {
             </Link>
           ) : (
             <Link
-              to="/signup"
+              to="/login"
               className="bg-[#008E50] hover:bg-[#256e3e] text-white py-2 px-4 rounded-[10px] cursor-pointer font-semibold tracking-wide"
             >
-              Signup/Login
+              Login
             </Link>
           )}
         </div>

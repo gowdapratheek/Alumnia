@@ -1,86 +1,87 @@
-import React, { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 import Header from "../components/Header";
 import axios from "axios";
 import { AuthContext } from "../AuthContext/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function Who() {
-  const { usermail } = useContext(AuthContext); // Destructure usermail from AuthContext
-  const [userType, setUserType] = useState(""); // State to store selected user type
-  console.log("email", usermail);
+  const { usermail } = useContext(AuthContext);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const userType = localStorage.getItem("userType");
 
-  const handleUserType = async () => {
-    if (!userType) {
+    if (userType === "Alumni" || userType === "Student") {
+      navigate("/");
+    }
+  }, [navigate]);
+
+  const handleUserType = async (type) => {
+    if (!type) {
       console.error("User type not selected.");
       return;
     }
 
     try {
-      // Make a PUT request to update user type
       const response = await axios.put(
         "http://localhost:5454/user/update-usertype",
         {
           email: usermail,
-          userType: userType,
+          userType: type,
         }
       );
 
       if (response.data.success) {
         console.log("User type updated successfully.");
-        // Optionally, handle success behavior here (e.g., show a message)
+
+        localStorage.setItem("userType", type);
+
+        switch (type) {
+          case "Alumni":
+            navigate("/alumni");
+            break;
+          case "Student":
+            navigate("/student");
+            break;
+          case "Others":
+            navigate("/");
+            break;
+        }
       } else {
         console.error("Failed to update user type:", response.data.message);
-        // Handle error if needed
       }
     } catch (error) {
       console.error("Error updating user type:", error);
-      // Handle error if needed
     }
   };
 
-  const handleSelectUserType = (type) => {
-    setUserType(type);
-  };
-
   return (
-    <div>
+    <div className="h-screen bg-gray-100">
       <Header />
-      <div className="h-[90vh] w-[100vw] absolute top-[9vh] flex justify-center items-center">
-        <div className="h-[45vh] w-[80vw] lg:w-[40vw] border-2 border-black rounded-[15px] flex flex-col items-center">
-          <h1 className="text-[2.25rem] font-extrabold tracking-widest uppercase my-2">
+      <div className="flex justify-center items-center h-full">
+        <div className="bg-white border border-black rounded-xl p-6 max-w-lg w-full">
+          <h1 className="text-3xl font-extrabold tracking-widest uppercase mb-4 text-center">
             Alumnia
           </h1>
-          <p className="font-bold">You are</p>
-          <div
-            className="bg-[#000000] hover:opacity-70 h-[6vh] w-[60vw] lg:w-[30vw] flex flex-col justify-evenly mt-4 border-[1px] rounded"
-            onClick={() => handleSelectUserType("Alumni")}
-          >
-            <p className="text-center font-semibold tracking-wide text-white">
+          <p className="font-bold text-lg text-center mb-4">You are</p>
+          <div className="grid grid-cols-1 gap-4">
+            <button
+              className="select-type bg-black rounded-lg p-4 cursor-pointer text-white font-semibold text-center"
+              onClick={() => handleUserType("Alumni")}
+            >
               Alumni
-            </p>
-          </div>
-          <div
-            className="bg-[#000000] hover:opacity-70 h-[6vh] w-[60vw] lg:w-[30vw] flex flex-col justify-evenly mt-4 border-[1px] rounded"
-            onClick={() => handleSelectUserType("Student")}
-          >
-            <p className="text-center font-semibold tracking-wide text-white">
+            </button>
+            <button
+              className="select-type bg-black rounded-lg p-4 cursor-pointer text-white font-semibold text-center"
+              onClick={() => handleUserType("Student")}
+            >
               Student
-            </p>
-          </div>
-          <div
-            className="bg-[#000000] hover:opacity-70 h-[6vh] w-[60vw] lg:w-[30vw] flex flex-col justify-evenly mt-4 border-[1px] rounded"
-            onClick={() => handleSelectUserType("Others")}
-          >
-            <p className="text-center font-semibold tracking-wide text-white">
+            </button>
+            <button
+              className="select-type bg-[#308e50] rounded-lg p-4 cursor-pointer text-white font-semibold text-center"
+              onClick={() => handleUserType("Others")}
+            >
               Others
-            </p>
-          </div>
-          <div
-            className="bg-[#000000] hover:opacity-70 h-[6vh] w-[60vw] lg:w-[30vw] flex flex-col justify-evenly mt-4 border-[1px] rounded"
-            onClick={handleUserType}
-          >
-            <p className="text-center font-semibold tracking-wide text-white">
-              Update User Type
-            </p>
+            </button>
           </div>
         </div>
       </div>

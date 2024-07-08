@@ -14,6 +14,9 @@ import { AuthProvider } from "./AuthContext/AuthContext";
 import ForgetPassword from "./pages/ForgetPassword";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Alumni from "./pages/Alumni";
+import Student from "./pages/Student";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -36,6 +39,8 @@ function App() {
           <Route path="/footer" element={<Footer />} />
           <Route path="/*" element={<Err />} />
           <Route path="/who" element={<Who />} />
+          <Route path="/alumni" element={<Alumni />} />
+          <Route path="/student" element={<Student />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/faq" element={<Faqs />} />
@@ -43,6 +48,7 @@ function App() {
           <Route path="/uploadEvent" element={<UploadEvent />} />
           <Route path="/previousEvents" element={<PreviousEvents />} />
           <Route path="/forget-password" element={<ForgetPassword />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </AuthProvider>
     </div>
