@@ -1,8 +1,6 @@
-// AuthContext.jsx
-
-import React, { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export const AuthContext = createContext();
 
@@ -14,7 +12,6 @@ export const AuthProvider = ({ children }) => {
   const [otp, setOtp] = useState("");
   const [otpSent, setOtpSent] = useState(false);
 
-  const navigate = useNavigate();
 
   useEffect(() => {
     const storedEmail = localStorage.getItem("userEmail");
@@ -63,7 +60,6 @@ export const AuthProvider = ({ children }) => {
         setUsermail(email);
         setLoggedIn(true);
         localStorage.setItem("userEmail", email);
-        navigate("/who");
       } else {
         alert("Signup failed: " + response.data.message);
       }
@@ -105,6 +101,33 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("userEmail");
   };
 
+const sendForgetPasswordOTP = async (email) => {
+  try {
+    const response = await axios.post(
+      "http://localhost:5454/user/send-forget-password-otp",
+      { email }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error during OTP sending:", error);
+    throw error;
+  }
+};
+
+const changePassword = async (email, otp, newPassword) => {
+  try {
+    const response = await axios.put(
+      "http://localhost:5454/user/change-password",
+      { email, otp, password: newPassword }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error during password change:", error);
+    throw error;
+  }
+};
+
+
   const authContextValue = {
     loggedIn,
     username,
@@ -120,6 +143,8 @@ export const AuthProvider = ({ children }) => {
     signup,
     sendRegisterOTP,
     logout,
+    sendForgetPasswordOTP,
+    changePassword,
   };
 
   return (
@@ -127,6 +152,10 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
+};
+
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default AuthContext;

@@ -1,44 +1,54 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthContext";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
   const { usermail, password, setUsermail, setPassword, login } =
     useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    await login();
-    navigate("/");
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await login();
+      toast.success("Login successful!");
+      navigate("/");
+    } catch (error) {
+      toast.error("Login failed. Please check your credentials.");
+    }
   };
 
   return (
     <>
       <Header />
-      <div className="h-[90vh] w-[100vw] absolute top-[8vh] lg:top-[7vh] flex justify-center items-center">
-        <div className="h-[65vh] lg:h-[60vh] w-[80vw] lg:w-[40vw] border-2 border-[#98F2F5] rounded-[15px] flex flex-col items-center">
-          <h1 className="text-[2.25rem] font-extrabold tracking-widest uppercase my-2">
-            Alumnia
+      <div className="h-screen flex justify-center items-center bg-gray-100">
+        <div className="bg-white border-2 border-black rounded-[15px] flex flex-col items-center p-6 w-full max-w-md mx-4">
+          <h1 className="text-[#308e50] font-conthrax font-semibold text-[1.25rem] lg:text-[2rem] mb-5">
+            ALUMNIA
           </h1>
-          <div className="bg-white h-[8vh] w-[40vw] lg:w-[20vw] rounded-[10px] flex text-black justify-center items-center text-[1rem]">
-            <div className="  text-black w-[25vw] lg:w-[8vw] font-medium p-2">
-              <div className="text-center cursor-pointer">
-                <a href="/signup">Sign Up</a>
-              </div>
+
+          <div className="flex justify-between w-[60%] mb-6">
+            <div className="p-2 w-1/2 text-center cursor-pointer">
+              <Link to="/signup" className="font-medium">
+                Sign Up
+              </Link>
             </div>
-            <div className=" bg-[#027AFF] text-white rounded-[6px] w-[25vw] lg:w-[8vw] font-medium p-2 flex justify-center items-center">
-              <a href="/login" className="font-medium cursor-pointer">
-                Login
-              </a>
+            <div className="bg-[#308e50] hover:bg-[#1f6237] rounded-[6px] text-white font-medium p-2 w-1/2 text-center cursor-pointer">
+              <a href="/login">Login</a>
             </div>
           </div>
+
           <form
-            className="w-[60vw] lg:w-[30vw] flex flex-col justify-evenly mt-3"
-            action="POST"
+            className="w-full flex flex-col items-center"
+            onSubmit={handleLogin}
           >
             <input
-              className="bg-black w-full h-[7vh] bg-transparent border-2 my-3 border-[#434343] p-2 rounded-[10px]"
+              className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
               id="Mail address"
               type="email"
               placeholder="Mail address"
@@ -47,7 +57,7 @@ function Login() {
               required
             />
             <input
-              className="bg-black w-full h-[7vh] bg-transparent border-2 my-3 border-[#434343] p-2 rounded-[10px]"
+              className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
               id="password"
               type="password"
               placeholder="Password"
@@ -55,18 +65,25 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <div className="w-[60vw] lg:w-[30vw] flex justify-center">
-              <button
-                className="w-[30vw] lg:w-[15vw] h-[7vh] bg-[#027AFF] my-3 rounded-[10px] justify-self-center cursor-pointer"
-                type="button"
-                onClick={handleLogin} // Use handleLogin instead of login directly
+            <button
+              className="bg-[#308e50] hover:bg-[#1f6237] text-white p-3 rounded-lg mt-2 transition duration-200 w-[60%] lg:w-[50%] text-center"
+              type="submit"
+            >
+              Login
+            </button>
+            <div className="mt-4">
+              <Link
+                to="/forget-password"
+                className="text-[#308e50] hover:text-[#1f6237]"
               >
-                Login
-              </button>
+                Forgot Password?
+              </Link>
             </div>
           </form>
         </div>
       </div>
+      <Footer />
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
     </>
   );
 }

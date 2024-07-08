@@ -1,70 +1,68 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../AuthContext/AuthContext";
 import Faq from "./Faqs";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 function Home() {
-  const { loggedIn, logout } = useContext(AuthContext);
-
-  console.log(loggedIn);
-
   return (
     <>
-      <div className="flex mt-[1%]">
-        <div className="fixed w-[73vw] left-[1%] bg-[#292929] border-[#98F2F5] border-[1px] h-[10vh] flex items-center justify-around z-50 rounded-[10px] ">
-          <a href="/" className="cursor-pointer ">
-            <img src="/alum-logo.png" alt="" className="h-[2rem] flex" />
-          </a>
-          <ul>
-            <a
-              href="/"
-              className="hover:text-[#DEE6EF] text-[#98F2F5] cursor-pointer"
-            >
-              <li>Home</li>
-            </a>
-          </ul>
-        </div>
+      <Header />
 
-        <div className="w-[23vw] h-[12vh] absolute right-[1%] border-[1px] flex justify-center items-center cursor-pointer">
-          {loggedIn ? (
-            <p
-              className="hover:text-[#DEE6EF] hover:border-[#DEE6EF] border-2 border-[#65bfe1] rounded-[10PX] p-2 lg:p-2 text-[0.8rem] lg:text-[1rem] cursor-pointer"
-              onClick={logout}
-            >
-              Logout
+      <div className="relative flex justify-center items-center min-h-screen bg-[#edf3f1]">
+        <div className="absolute top-[12vh] h-[90vh] w-[98vw] flex flex-col justify-evenly lg:flex-row lg:items-center">
+          <div className="lg:w-[40vw] mx-4 text-center lg:text-left">
+            <p className="text-[#3d3d3d] font-poppins font-re text-[2rem] tracking-[8%] leading-[100%]">
+              Welcome to
             </p>
-          ) : (
-            <Link to="/login" className="cursor-pointer">
-              <p className="hover:text-[#DEE6EF] hover:border-[#DEE6EF] border-2 border-[#65bfe1] rounded-[10PX] p-2 lg:p-2 text-[0.8rem] lg:text-[1rem] cursor-pointer">
-                Login/Signup
-              </p>
-            </Link>
-          )}
+            <h1 className="text-[#308f51] font-conthrax font-semibold text-[3rem] lg:text-[5rem] tracking-[8%]">
+              ALUMNIA
+            </h1>
+            <p className="w-[90vw] lg:w-[33vw] mx-auto lg:mx-0 font-poppins font-weight: 600; tracking-[8%] leading-[150%] text-[22px] text-[#4d4d4d]">
+              Join our vibrant community of students, alumni, and institution
+              members to share resources, stay updated on events, and build
+              lasting connections.
+            </p>
+            <div className="mt-6">
+              <a
+                href="/signup"
+                className="bg-[#308e50] text-white px-4 py-2 rounded-lg mr-6"
+              >
+                Register Now
+              </a>
+              <a
+                href="/"
+                className="bg-[#d4e4df] text-[#1e1e1e] px-4 py-2 rounded-lg"
+              >
+                Learn more
+              </a>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 grid-rows-3 gap-2 w-[90vw] lg:w-[40vw] h-[50vh] lg:h-[70vh] self-center my-12">
+            <img
+              src="/1st.png"
+              alt="Graduation hats"
+              className="object-cover w-full h-full rounded-lg"
+            />
+            <img
+              src="/2nd.png"
+              alt="Student with books"
+              className="object-cover w-full h-full rounded-lg row-span-2"
+            />
+            <img
+              src="/3rd.png"
+              alt="Graduates applauding"
+              className="object-cover w-full h-full rounded-lg row-span-2"
+            />
+            <img
+              src="/4th.png"
+              alt="Institution building"
+              className="object-cover w-full h-full rounded-lg"
+            />
+          </div>
         </div>
       </div>
 
-      <div className="h-[90vh] w-[97vw] mx-[1%] bg-gradient-to-b from-white-5 to-blue-027aff opacity-30 relative top-[12vh] rounded-[16px] rounded-tr-[0px]"></div>
-
-      <div className="absolute top-[12vh] h-[90vh] w-[98vw] flex flex-col justify-evenly lg:flex-row lg:items-center ">
-        <div className="lg:w-[40vw] mx-4">
-          <h1 className="text-[#027AFF] font-bold text-[5rem] ">Alumnia</h1>
-          <p className="w-[70vw] lg:w-[30vw]">
-            Welcome to our alumnisphere website Reconnect, network, and thrive
-            with us as we celebrate our institution&apos;s legacy together.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 gap-2 w-[90vw] lg:w-[40vw] h-[50vh] lg:h-[60vh] self-center">
-          <div className="bg-black rounded-lg"></div>
-          <div className="bg-black rounded-lg row-span-2"></div>
-          <div className="bg-black rounded-lg "></div>
-        </div>
-      </div>
-
-      <div className="absolute top-[105vh]">
-        <Faq />
-      </div>
+      <Faq />
       <Footer />
     </>
   );

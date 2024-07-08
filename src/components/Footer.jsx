@@ -2,19 +2,23 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <>
-      <div className="h-[100vh] w-[98vw] flex flex-col justify-end items-center overflow-x-clip">
-        <div className="w-[96vw] h-[30vh] lg:h-[25vh] mx-[1vw] my-[3vh]  border-black border-[1px] z-50 rounded-[10px] flex flex-col justify-end">
-          <div className="flex items-center justify-around h-[27vh]">
-            <Link to="/" className="cursor-pointer ">
-              <h1 className="text-2xl font-bold">ALUMNIA</h1>
-            </Link>
-
-            <ul className="relative top-[-3vh] py-5">
-              <li className="py-1">
+    <footer className="w-full flex flex-col items-center bg-gray-100 mt-8">
+      <div className="w-full max-w-screen-xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center">
+          <Link
+            to="/"
+            className="text-2xl font-Conthrax font-semibold text-black"
+          >
+            <h1 className="text-[#308e50] font-conthrax font-semibold text-[1.25rem] lg:text-[2rem]">
+              ALUMNIA
+            </h1>
+          </Link>
+          <div className="flex space-x-8">
+            <ul className="space-y-2">
+              <li>
                 <Link
                   to="/"
-                  className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide "
+                  className="text-[#308e50] hover:text-[#1f6237] font-semibold tracking-wide"
                 >
                   Home
                 </Link>
@@ -22,18 +26,17 @@ function Footer() {
               <li>
                 <Link
                   to="/faq"
-                  className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
+                  className="text-[#308e50] hover:text-[#1f6237] font-semibold tracking-wide"
                 >
                   Faq&apos;s
                 </Link>
               </li>
             </ul>
-
-            <ul>
-              <li className="py-1">
+            <ul className="space-y-2">
+              <li>
                 <Link
                   to="/events"
-                  className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
+                  className="text-[#308e50] hover:text-[#1f6237] font-semibold tracking-wide"
                 >
                   Events
                 </Link>
@@ -41,45 +44,49 @@ function Footer() {
               <li>
                 <Link
                   to="/resources"
-                  className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
+                  className="text-[#308e50] hover:text-[#1f6237] font-semibold tracking-wide"
                 >
                   Resources
                 </Link>
               </li>
-              <li className="py-1">
+              <li>
                 <Link
                   to="/about"
-                  className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
+                  className="text-[#308e50] hover:text-[#1f6237] font-semibold tracking-wide"
                 >
                   About us
                 </Link>
               </li>
-
               <li>
                 <Link
                   to="/contact"
-                  className="hover:text-gray-700 cursor-pointer font-semibold tracking-wide"
+                  className="text-[#308e50] hover:text-[#1f6237] font-semibold tracking-wide"
                 >
                   Contact us
                 </Link>
               </li>
             </ul>
           </div>
-
-          <div className=" border-t-[1px] border-gray-400  rounded-b-[10px] p-1">
-            <div className="h-[10vh] lg:h-[6vh] w-[96vw] flex flex-col   lg:flex-row lg:items-center">
-              <div className="h-[10vh] lg:h-[6vh] w-[100%] lg:w-[50%] lg:flex justify-around items-center pl-[2vh]">
-                <p className="font-normal ">
-                  &copy;2024 Alumni - All Rights Reserved.
-                </p>
-                <p>Privacy policy</p>
-                <p>Terms</p>
+        </div>
+        <div className="mt-8 flex flex-col items-center border-t border-gray-300 pt-4">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between w-full">
+            <div className="flex flex-col lg:flex-row items-center lg:space-x-6 text-center lg:text-left">
+              <p className="text-sm font-normal">
+                &copy; 2024 Alumni - All Rights Reserved.
+              </p>
+              <div>
+                <Link to="/privacy" className="text-sm hover:underline mr-8">
+                  Privacy policy
+                </Link>
+                <Link to="/terms" className="text-sm hover:underline">
+                  Terms
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </footer>
   );
 }
 

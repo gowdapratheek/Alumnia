@@ -11,16 +11,15 @@ import PreviousEvents from "./pages/PreviousEvents";
 import UploadEvent from "./pages/UploadEvent";
 import Faqs from "./pages/Faqs";
 import { AuthProvider } from "./AuthContext/AuthContext";
-
-// import { AuthContext } from "./AuthContext/AuthContext";
-// import { useContext } from "react";
+import ForgetPassword from "./pages/ForgetPassword";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  // const { loggedIn } = useContext(AuthContext);
-  // console.log("user", loggedIn);
   return (
     <div className="App">
       <AuthProvider>
+        <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/header" element={<Header />} />
@@ -33,6 +32,7 @@ function App() {
           <Route path="/events" element={<EventOptions />} />
           <Route path="/uploadEvent" element={<UploadEvent />} />
           <Route path="/previousEvents" element={<PreviousEvents />} />
+          <Route path="/forget-password" element={<ForgetPassword />} />
         </Routes>
       </AuthProvider>
     </div>

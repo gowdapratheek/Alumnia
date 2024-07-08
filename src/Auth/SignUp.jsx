@@ -1,9 +1,10 @@
-// Signup.jsx
-
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthContext";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Signup() {
   const {
@@ -21,105 +22,119 @@ function Signup() {
   } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleSendOTP = () => {
-    sendRegisterOTP();
+  const handleSendOTP = async (e) => {
+    e.preventDefault();
+    try {
+      await sendRegisterOTP();
+      toast.success("OTP sent to your email.");
+    } catch (error) {
+      toast.error("Failed to send OTP. Please try again.");
+    }
   };
 
-  const handleSignup = async () => {
-    await signup();
-    navigate("/who");
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    try {
+      await signup();
+      toast.success("Signup successful!");
+      navigate("/who");
+    } catch (error) {
+      toast.error("Signup failed. Please try again.");
+    }
   };
 
   return (
     <>
       <Header />
-      <div className="h-[90vh] w-[100vw] absolute top-[8vh] lg:top-[7vh] flex justify-center items-center">
-        <div className="h-[65vh] lg:h-[60vh] w-[80vw] lg:w-[40vw] border-2 border-[#98F2F5] rounded-[15px] flex flex-col items-center">
-          <h1 className="text-[2.25rem] font-extrabold tracking-widest uppercase my-2">
-            Alumnia
+      <div className="h-screen flex justify-center items-center bg-gray-100">
+        <div className="bg-white border-2 border-black rounded-[15px] flex flex-col items-center p-6 w-full max-w-md mx-4">
+          <h1 className="text-[#308e50] font-conthrax font-semibold text-[1.25rem] lg:text-[2rem] mb-5">
+            ALUMNIA
           </h1>
-          <div className="bg-white h-[8vh] w-[40vw] lg:w-[20vw] rounded-[10px] flex text-black justify-center items-center text-[1rem]">
-            <div className="bg-[#027AFF] rounded-[6px] text-white w-[25vw] lg:w-[8vw] font-medium p-2">
-              <div className="text-center cursor-pointer">
-                <a href="/signup">Sign Up</a>
+
+          {!otpSent ? (
+            <>
+              <div className="flex justify-between w-[60%] mb-6">
+                <div className="bg-[#308e50] hover:bg-[#1f6237] rounded-[6px] text-white font-medium p-2 w-1/2 mr-2 text-center cursor-pointer">
+                  <a href="/signup">Sign Up</a>
+                </div>
+                <div className="p-2 w-1/2 text-center cursor-pointer">
+                  <a href="/login" className="font-medium">
+                    Login
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className="p-1 w-[20vw] lg:w-[10vw] flex justify-center items-center">
-              <a href="/login" className="font-medium cursor-pointer">
-                Login
-              </a>
-            </div>
-          </div>
-          {!otpSent && (
-            <form
-              className="w-[60vw] lg:w-[30vw] flex flex-col justify-evenly mt-3"
-              action="POST"
-            >
-              <input
-                className="bg-black w-full h-[7vh] bg-transparent border-2 my-3 border-[#434343] p-2 rounded-[10px]"
-                id="Mail address"
-                type="email"
-                placeholder="Mail address"
-                value={usermail}
-                onChange={(e) => setUsermail(e.target.value)}
-                required
-              />
-              <input
-                className="bg-black w-full h-[7vh] bg-transparent border-2 my-3 border-[#434343] p-2 rounded-[10px]"
-                id="Name"
-                type="text"
-                placeholder="Name"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-              <input
-                className="bg-black w-full h-[7vh] bg-transparent border-2 my-3 border-[#434343] p-2 rounded-[10px]"
-                id="password"
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-              <div className="w-[60vw] lg:w-[30vw] flex justify-center">
+              <form
+                className="w-full flex flex-col items-center"
+                onSubmit={handleSendOTP}
+              >
+                <input
+                  className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
+                  id="Name"
+                  type="text"
+                  placeholder="Name"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+                <input
+                  className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
+                  id="Mail address"
+                  type="email"
+                  placeholder="Mail address"
+                  value={usermail}
+                  onChange={(e) => setUsermail(e.target.value)}
+                  required
+                />
+
+                <input
+                  className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
+                  id="password"
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
                 <button
-                  className="w-[30vw] lg:w-[15vw] h-[7vh] bg-[#027AFF] my-3 rounded-[10px] justify-self-center cursor-pointer"
-                  type="button"
-                  onClick={sendRegisterOTP}
+                  className="bg-[#308e50] hover:bg-[#1f6237] text-white p-3 rounded-lg mt-2  transition duration-200 w-[60%] lg:w-[50%] text-center"
+                  type="submit"
                 >
                   Send OTP
                 </button>
+              </form>
+            </>
+          ) : (
+            <>
+              <div className="w-full bg-gray-100 p-3 rounded-lg text-center mb-6">
+                <p>A six-digit OTP has been sent to your mail</p>
               </div>
-            </form>
-          )}
-          {otpSent && (
-            <form
-              className="w-[60vw] lg:w-[30vw] flex flex-col justify-evenly mt-3"
-              action="POST"
-            >
-              <input
-                className="bg-black w-full h-[7vh] bg-transparent border-2 my-3 border-[#434343] p-2 rounded-[10px]"
-                id="otp"
-                type="text"
-                placeholder="OTP"
-                value={otp}
-                onChange={(e) => setOtp(e.target.value)}
-                required
-              />
-              <div className="w-[60vw] lg:w-[30vw] flex justify-center">
+              <form
+                className="w-full flex flex-col items-center"
+                onSubmit={handleSignup}
+              >
+                <input
+                  className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[80%]"
+                  id="otp"
+                  type="text"
+                  placeholder="OTP"
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value)}
+                  required
+                />
                 <button
-                  className="w-[30vw] lg:w-[15vw] h-[7vh] bg-[#027AFF] my-3 rounded-[10px] justify-self-center cursor-pointer"
-                  type="button"
-                  onClick={signup}
+                  className="bg-[#027AFF] text-white p-3 rounded-lg w-[40%] mt-2 hover:bg-blue-700 transition duration-200 text-center"
+                  type="submit"
                 >
                   Sign Up
                 </button>
-              </div>
-            </form>
+              </form>
+            </>
           )}
         </div>
       </div>
+      <Footer />
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
     </>
   );
 }
