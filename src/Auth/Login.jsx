@@ -37,15 +37,15 @@ function Login() {
   return (
     <>
       <Header />
-      <div className="h-screen flex justify-center items-center bg-gray-100">
-        <div className="bg-white border-2 border-black rounded-[15px] flex flex-col items-center p-6 w-full max-w-md mx-4">
+      <div className="h-screen flex justify-center items-center bg-[#d4e4df]">
+        <div className="bg-white  rounded-[15px] flex flex-col items-center p-6 w-full max-w-md mx-4">
           <h1 className="text-[#308e50] font-conthrax font-semibold text-[1.25rem] lg:text-[2rem] mb-5">
             ALUMNIA
           </h1>
 
           <div className="flex justify-between w-[60%] mb-6">
             <div className="p-2 w-1/2 text-center cursor-pointer">
-              <Link to="/signup" className="font-medium">
+              <Link to="/signup" className="font-medium text-[#686868]">
                 Sign Up
               </Link>
             </div>
@@ -59,7 +59,7 @@ function Login() {
             onSubmit={handleLogin}
           >
             <input
-              className={`bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%] ${
+              className={`bg-transparent border-2 border-[#c4c5c5] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%] ${
                 emailError ? "border-red-500" : ""
               }`}
               id="Mail address"
@@ -79,7 +79,7 @@ function Login() {
             )}
 
             <input
-              className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
+              className="bg-transparent border-2 border-[#c4c5c5] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
               id="password"
               type="password"
               placeholder="Password"
@@ -96,7 +96,7 @@ function Login() {
             <div className="mt-4">
               <Link
                 to="/forget-password"
-                className="text-[#308e50] hover:text-[#1f6237]"
+                className="text-[#686868] hover:text-[#686868] font-semibold "
               >
                 Forgot Password?
               </Link>

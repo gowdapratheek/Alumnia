@@ -43,8 +43,8 @@ function Signup() {
   return (
     <>
       <Header />
-      <div className="h-screen flex justify-center items-center bg-gray-100">
-        <div className="bg-white border-2 border-black rounded-[15px] flex flex-col items-center p-6 w-full max-w-md mx-4">
+      <div className="h-screen flex justify-center items-center bg-[#d4e4df]">
+        <div className="bg-white  rounded-[15px] flex flex-col items-center p-6 w-full max-w-md mx-4">
           <h1 className="text-[#308e50] font-conthrax font-semibold text-[1.25rem] lg:text-[2rem] mb-5">
             ALUMNIA
           </h1>
@@ -66,7 +66,7 @@ function Signup() {
                 onSubmit={handleSendOTP}
               >
                 <input
-                  className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
+                  className="bg-transparent border-2 border-[#c4c5c5] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
                   id="Name"
                   type="text"
                   placeholder="Name"
@@ -75,7 +75,7 @@ function Signup() {
                   required
                 />
                 <input
-                  className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
+                  className="bg-transparent border-2 border-[#c4c5c5] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
                   id="Mail address"
                   type="email"
                   placeholder="Mail address"
@@ -85,7 +85,7 @@ function Signup() {
                 />
 
                 <input
-                  className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
+                  className="bg-transparent border-2 border-[#c4c5c5] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
                   id="password"
                   type="password"
                   placeholder="Password"
@@ -111,7 +111,7 @@ function Signup() {
                 onSubmit={handleSignup}
               >
                 <input
-                  className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[80%]"
+                  className="bg-transparent border-2 border-[#c4c5c5] p-3 rounded-lg mb-4 w-[80%]"
                   id="otp"
                   type="text"
                   placeholder="OTP"

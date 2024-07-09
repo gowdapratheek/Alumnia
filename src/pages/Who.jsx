@@ -58,7 +58,7 @@ function Who() {
     <div className="h-screen bg-gray-100">
       <Header />
       <div className="flex justify-center items-center h-full">
-        <div className="bg-white border border-black rounded-xl p-6 max-w-lg w-full">
+        <div className=" bg-[#d4e4df] rounded-xl p-6 max-w-lg w-full">
           <h1 className="text-3xl font-extrabold tracking-widest uppercase mb-4 text-center">
             Alumnia
           </h1>

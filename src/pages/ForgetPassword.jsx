@@ -25,18 +25,15 @@ function ForgetPassword() {
         setStage("verifyOTP");
       } else {
         toast.error(response.message);
-        // Optionally handle specific messages here
         if (response.message === "Email not registered") {
-          // Handle scenario where email is not registered
-          // For example, display a different message or reset form fields
-          setEmail(""); // Reset email field
+          setEmail(""); 
         }
       }
     } catch (error) {
       toast.error("Error sending OTP. Please try again.");
       console.error("Error sending OTP:", error);
     } finally {
-      setLoading(false); // Reset loading state
+      setLoading(false); 
     }
   };
 
@@ -46,7 +43,7 @@ function ForgetPassword() {
       return;
     }
     try {
-      setLoading(true); // Set loading state
+      setLoading(true); 
       const response = await changePassword(email, otp, newPassword);
       if (response.success) {
         toast.success("Password changed successfully!", {
@@ -57,7 +54,7 @@ function ForgetPassword() {
         toast.error(response.message);
       }
     } catch (error) {
-      toast.error("Error changing password. Please try again.");
+      toast.error("Please enter vaild details.");
       console.error("Error changing password:", error);
     } finally {
       setLoading(false); 
@@ -67,15 +64,15 @@ function ForgetPassword() {
   return (
     <>
       <Header />
-      <div className="h-screen flex justify-center items-center bg-gray-100">
-        <div className="bg-white border-2 border-black rounded-[15px] flex flex-col items-center p-6 w-full max-w-md mx-4">
+      <div className="h-screen flex justify-center items-center bg-[#d4e4df]">
+        <div className="bg-white  rounded-[15px] flex flex-col items-center p-6 w-full max-w-md mx-4">
           {stage === "sendOTP" && (
             <>
               <h1 className="text-[#308e50] font-poppins font-semibold text-[1.25rem] lg:text-[2rem] mb-5">
                 Forget Password
               </h1>
               <input
-                className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
+                className="bg-transparent border-2 border-[#c4c5c5] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
                 type="email"
                 placeholder="Email"
                 value={email}
@@ -100,7 +97,7 @@ function ForgetPassword() {
                 Reset Password
               </h1>
               <input
-                className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
+                className="bg-transparent border-2 border-[#c4c5c5] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
                 type="text"
                 placeholder="OTP"
                 value={otp}
@@ -108,7 +105,7 @@ function ForgetPassword() {
                 required
               />
               <input
-                className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
+                className="bg-transparent border-2 border-[#c4c5c5] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
                 type="password"
                 placeholder="New Password"
                 value={newPassword}
@@ -116,7 +113,7 @@ function ForgetPassword() {
                 required
               />
               <input
-                className="bg-transparent border-2 border-[#434343] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
+                className="bg-transparent border-2 border-[#c4c5c5] p-3 rounded-lg mb-4 w-[95%] lg:w-[90%]"
                 type="password"
                 placeholder="Confirm Password"
                 value={confirmPassword}
