@@ -1,6 +1,9 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
@@ -11,7 +14,7 @@ export const AuthProvider = ({ children }) => {
   const [password, setPassword] = useState("");
   const [otp, setOtp] = useState("");
   const [otpSent, setOtpSent] = useState(false);
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedEmail = localStorage.getItem("userEmail");
@@ -24,7 +27,7 @@ export const AuthProvider = ({ children }) => {
   const login = async () => {
     const data = { email: usermail, password };
     try {
-      const response = await axios.put(
+      const response = await axios.post(
         "http://localhost:5454/user/login",
         data
       );
@@ -36,8 +39,12 @@ export const AuthProvider = ({ children }) => {
         setUsermail(email);
         setLoggedIn(true);
         localStorage.setItem("userEmail", email);
+        toast.success("Login successful!", {
+          autoClose: 2000,
+          onClose: () => navigate("/"),
+        });
       } else {
-        alert("Login failed: " + response.data.message);
+        toast.error("Login failed: " + response.data.message);
       }
     } catch (error) {
       console.error("Error during login:", error);
@@ -101,37 +108,35 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("userEmail");
   };
 
-const sendForgetPasswordOTP = async (email) => {
-  try {
-    const response = await axios.post(
-      "http://localhost:5454/user/send-forget-password-otp",
-      { email }
-    );
+  const sendForgetPasswordOTP = async (email) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5454/user/send-forget-password-otp",
+        { email }
+      );
 
-    return response.data;
-  } catch (error) {
-    if (error.response && error.response.status === 400) {
-      return error.response.data; // Return the error response data
+      return response.data;
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        return error.response.data; // Return the error response data
+      }
+      console.error("Error during OTP sending:", error);
+      throw error;
     }
-    console.error("Error during OTP sending:", error);
-    throw error;
-  }
-};
+  };
 
-
-const changePassword = async (email, otp, newPassword) => {
-  try {
-    const response = await axios.put(
-      "http://localhost:5454/user/change-password",
-      { email, otp, password: newPassword }
-    );
-    return response.data;
-  } catch (error) {
-    console.error("Error during password change:", error);
-    throw error;
-  }
-};
-
+  const changePassword = async (email, otp, newPassword) => {
+    try {
+      const response = await axios.put(
+        "http://localhost:5454/user/change-password",
+        { email, otp, password: newPassword }
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error during password change:", error);
+      throw error;
+    }
+  };
 
   const authContextValue = {
     loggedIn,

@@ -15,7 +15,7 @@ function Header() {
   return (
     <>
       <div className="fixed top-0 left-0 w-[94%] h-[12vh] flex items-center justify-between px-8 z-50 bg-[#fbfdfc] rounded-[15px] mx-[3%]">
-        <Link href="/" className="flex items-center cursor-pointer">
+        <Link to="/" className="flex items-center cursor-pointer">
           <img
             src="/alum-logo.png"
             alt="Alumnia Logo"

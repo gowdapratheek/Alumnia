@@ -56,10 +56,10 @@ function Signup() {
             <>
               <div className="flex justify-between w-[60%] mb-6">
                 <div className="bg-[#308e50] hover:bg-[#1f6237] rounded-[6px] text-white font-medium p-2 w-1/2 mr-2 text-center cursor-pointer">
-                  <Link href="/signup">Sign Up</Link>
+                  <Link to="/signup">Sign Up</Link>
                 </div>
                 <div className="p-2 w-1/2 text-center cursor-pointer">
-                  <Link href="/login" className="font-medium">
+                  <Link to="/login" className="font-medium">
                     Login
                   </Link>
                 </div>

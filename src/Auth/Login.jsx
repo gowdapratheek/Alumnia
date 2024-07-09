@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../AuthContext/AuthContext";
 import Header from "../components/Header";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 function Login() {
   const { usermail, password, setUsermail, setPassword, login } =
     useContext(AuthContext);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [emailError, setEmailError] = useState("");
 
   const validateEmail = (email) => {
@@ -29,10 +29,6 @@ function Login() {
 
     try {
       await login();
-      toast.success("Login successful!", {
-        autoClose: 2000, 
-        onClose: () => navigate("/"),
-      });
     } catch (error) {
       toast.error("Login failed. Please check your credentials.");
     }
@@ -54,7 +50,7 @@ function Login() {
               </Link>
             </div>
             <div className="bg-[#308e50] hover:bg-[#1f6237] rounded-[6px] text-white font-medium p-2 w-1/2 text-center cursor-pointer">
-              <Link href="/login">Login</Link>
+              <Link to="/login">Login</Link>
             </div>
           </div>
 
