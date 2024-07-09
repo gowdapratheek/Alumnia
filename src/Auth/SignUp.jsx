@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthContext";
 import Header from "../components/Header";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,13 +20,12 @@ function Signup() {
     signup,
     sendRegisterOTP,
   } = useContext(AuthContext);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleSendOTP = async (e) => {
     e.preventDefault();
     try {
       await sendRegisterOTP();
-      toast.success("OTP sent to your email.");
     } catch (error) {
       toast.error("Failed to send OTP. Please try again.");
     }
@@ -36,8 +35,6 @@ function Signup() {
     e.preventDefault();
     try {
       await signup();
-      toast.success("Signup successful!");
-      navigate("/who");
     } catch (error) {
       toast.error("Signup failed. Please try again.");
     }

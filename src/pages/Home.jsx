@@ -24,13 +24,13 @@ function Home() {
             </p>
             <div className="mt-6">
               <Link
-                href="/signup"
+                to="/signup"
                 className="bg-[#308e50] text-white px-4 py-2 rounded-lg mr-6"
               >
                 Register Now
               </Link>
               <Link
-                href="/"
+                to="/"
                 className="bg-[#d4e4df] text-[#1e1e1e] px-4 py-2 rounded-lg"
               >
                 Learn more

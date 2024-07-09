@@ -67,8 +67,9 @@ export const AuthProvider = ({ children }) => {
         setUsermail(email);
         setLoggedIn(true);
         localStorage.setItem("userEmail", email);
+        navigate("/who");
       } else {
-        alert("Signup failed: " + response.data.message);
+        toast.success(response.data.message);
       }
     } catch (error) {
       console.error("Error during signup:", error);
@@ -88,9 +89,9 @@ export const AuthProvider = ({ children }) => {
 
       if (response.data.success) {
         setOtpSent(true);
-        // alert("OTP sent successfully to your email.");
+        toast.success("OTP sent to your email.");
       } else {
-        alert("Failed to send OTP: " + response.data.message);
+        toast.error(response.data.message);
       }
     } catch (error) {
       console.error("Error during OTP sending:", error);
@@ -106,6 +107,7 @@ export const AuthProvider = ({ children }) => {
     setOtp("");
     setOtpSent(false);
     localStorage.removeItem("userEmail");
+    localStorage.removeItem("userType");
   };
 
   const sendForgetPasswordOTP = async (email) => {
