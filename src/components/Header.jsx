@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../AuthContext/AuthContext";
+import { AuthContext } from "../context/AuthContext/AuthContext";
 import { useContext } from "react";
 
 function Header() {
@@ -14,7 +14,7 @@ function Header() {
 
   return (
     <>
-      <div className="fixed top-0 left-0 w-[94%] h-[12vh] flex items-center justify-between px-8 z-50 bg-[#fbfdfc] rounded-[15px] mx-[3%]">
+      <div className="fixed top-4 left-0 w-[94%] h-[12vh] flex items-center justify-between px-4 z-50 bg-[#fbfdfc] rounded-[15px] mx-[3%]">
         <Link to="/" className="flex items-center cursor-pointer">
           <img
             src="/alum-logo.png"

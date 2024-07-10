@@ -8,8 +8,8 @@ function Home() {
     <>
       <Header />
 
-      <div className="relative flex justify-center items-center min-h-screen bg-[#d4e4df]">
-        <div className="absolute top-[12vh] h-[90vh] w-[98vw] flex flex-col justify-evenly lg:flex-row lg:items-center">
+      <div className="relative flex justify-center items-center min-h-screen bg-[#edf3f1]">
+        <div className="absolute top-[17vh] lg:top-[13vh] h-[90vh] w-[98vw] flex flex-col justify-evenly lg:flex-row lg:items-center">
           <div className="lg:w-[40vw] mx-4 text-center lg:text-left">
             <p className="text-[#3d3d3d] font-poppins font-re text-[2rem] tracking-[8%] leading-[100%]">
               Welcome to
@@ -38,7 +38,7 @@ function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 grid-rows-3 gap-2 w-[90vw] lg:w-[40vw] h-[50vh] lg:h-[70vh] self-center my-12">
+          <div className="grid grid-cols-2 grid-rows-3 gap-2 w-[90vw] lg:w-[40vw] h-[50vh] lg:h-[70vh] self-center my-8">
             <img
               src="/1st.png"
               alt="Graduation hats"

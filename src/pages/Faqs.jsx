@@ -3,7 +3,7 @@ import Accordion from "../components/Accordian";
 const Faq = () => {
   return (
     <>
-      <h1 className="font-bold text-2xl mt-[20vw] mb-[5vw] lg:my-[3vw] mx-[5vw]">
+      <h1 className="font-bold text-3xl mt-[30vw] mb-[5vw] lg:my-[2vw] mx-[4vw]">
         FAQ&apos;S
       </h1>
       <div className="w-[98vw] flex flex-col  items-center">

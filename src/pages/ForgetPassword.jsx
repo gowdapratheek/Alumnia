@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../AuthContext/AuthContext";
+import { AuthContext } from "../context/AuthContext/AuthContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { toast, ToastContainer } from "react-toastify";
@@ -26,14 +26,14 @@ function ForgetPassword() {
       } else {
         toast.error(response.message);
         if (response.message === "Email not registered") {
-          setEmail(""); 
+          setEmail("");
         }
       }
     } catch (error) {
       toast.error("Error sending OTP. Please try again.");
       console.error("Error sending OTP:", error);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -43,7 +43,7 @@ function ForgetPassword() {
       return;
     }
     try {
-      setLoading(true); 
+      setLoading(true);
       const response = await changePassword(email, otp, newPassword);
       if (response.success) {
         toast.success("Password changed successfully!", {
@@ -57,7 +57,7 @@ function ForgetPassword() {
       toast.error("Please enter vaild details.");
       console.error("Error changing password:", error);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 

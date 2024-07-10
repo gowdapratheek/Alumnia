@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import Header from "../components/Header";
 import axios from "axios";
-import { AuthContext } from "../AuthContext/AuthContext";
+import { AuthContext } from "../context/AuthContext/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 function Who() {

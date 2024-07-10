@@ -1,8 +1,7 @@
 import { useContext, useState } from "react";
-import { AuthContext } from "../AuthContext/AuthContext";
+import { AuthContext } from "../context/AuthContext/AuthContext";
 import Header from "../components/Header";
 // import { useNavigate } from "react-router-dom";
-import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -37,7 +36,7 @@ function Login() {
   return (
     <>
       <Header />
-      <div className="h-screen flex justify-center items-center bg-[#d4e4df]">
+      <div className="h-screen flex justify-center items-center bg-[#edf3f1]">
         <div className="bg-white  rounded-[15px] flex flex-col items-center p-6 w-full max-w-md mx-4">
           <h1 className="text-[#308e50] font-conthrax font-semibold text-[1.25rem] lg:text-[2rem] mb-5">
             ALUMNIA
@@ -104,8 +103,7 @@ function Login() {
           </form>
         </div>
       </div>
-      <Footer />
-      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
+      <ToastContainer position="top-right" autoClose={3000} showProgressBar />
     </>
   );
 }
