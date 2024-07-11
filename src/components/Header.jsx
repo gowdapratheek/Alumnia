@@ -40,6 +40,18 @@ function Header() {
               Resources
             </Link>
             <Link
+              to="/alumni-details"
+              className="hover:text-[#1f6237] text-[#2b2b2b] cursor-pointer font-semibold tracking-wide"
+            >
+              Alumni
+            </Link>
+            <Link
+              to="/student-details"
+              className="hover:text-[#1f6237] text-[#2b2b2b] cursor-pointer font-semibold tracking-wide"
+            >
+              Student
+            </Link>
+            <Link
               to="/events"
               className="hover:text-[#1f6237] text-[#2b2b2b] cursor-pointer font-semibold tracking-wide"
             >
