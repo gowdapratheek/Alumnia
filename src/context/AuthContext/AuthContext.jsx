@@ -69,7 +69,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("userEmail", email);
         navigate("/who");
       } else {
-        toast.success(response.data.message);
+        toast.error(response.data.message);
       }
     } catch (error) {
       console.error("Error during signup:", error);
