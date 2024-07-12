@@ -1,5 +1,5 @@
 // src/pages/Alumni.jsx
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Header from "../components/Header";
@@ -9,6 +9,13 @@ import { useNavigate } from "react-router-dom";
 const Alumni = () => {
   const { alumniDetails, setAlumniDetails, user } = useContext(AlumniContext);
   const navigate = useNavigate();
+  const [tempPhoto, setTempPhoto] = useState(
+    alumniDetails.photo || "/default-profile.png"
+  );
+
+  useEffect(() => {
+    setTempPhoto(alumniDetails.photo || "/default-profile.png");
+  }, [alumniDetails]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -33,22 +40,30 @@ const Alumni = () => {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.onloadend = () => {
-      setAlumniDetails((prevDetails) => ({
-        ...prevDetails,
-        photo: reader.result,
-      }));
+      setTempPhoto(reader.result);
     };
     reader.readAsDataURL(file);
   };
 
+  const handleRemovePhoto = () => {
+    setTempPhoto("/default-profile.png"); // Set to the default photo path
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setAlumniDetails((prevDetails) => ({
+      ...prevDetails,
+      photo: tempPhoto,
+    }));
     try {
       const response = await axios.put(
         "http://localhost:5454/api/update-alumni-details",
         {
           email: user.email,
-          alumniDetails,
+          alumniDetails: {
+            ...alumniDetails,
+            photo: tempPhoto,
+          },
         }
       );
 
@@ -67,40 +82,41 @@ const Alumni = () => {
   return (
     <>
       <Header />
-      <div className="max-w-4xl mx-auto p-6 bg-[#edf3f1] shadow-md rounded-md mt-[15vh]">
-        <h1 className="text-2xl font-bold mb-6 text-[#008E50]">
-          Update Alumni Details
+      <div className="max-w-4xl mx-auto p-6 bg-[#edf3f1] shadow-md rounded-md mt-[10vh]">
+        <h1 className="text-2xl font-bold mb-6 text-[#008E50] ">
+          Enter Your Details
         </h1>
         <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="flex flex-col items-center mb-6">
-              <input
-                id="photo-upload"
-                type="file"
-                accept="image/*"
-                onChange={handlePhotoChange}
-                className="hidden"
+          <div className="flex flex-col items-center mb-6 relative">
+            <input
+              id="photo-upload"
+              type="file"
+              accept="image/*"
+              onChange={handlePhotoChange}
+              className="hidden"
+            />
+            <label htmlFor="photo-upload" className="relative cursor-pointer">
+              <img
+                src={tempPhoto || "/default-profile.png"}
+                alt="Alumni"
+                className="w-36 h-36 rounded-full object-cover border-4 border-[#008E50]"
               />
-              <label htmlFor="photo-upload">
-                <img
-                  src={alumniDetails.photo}
-                  alt="Alumni"
-                  className="w-36 h-36 rounded-full object-cover border-4 border-[#008E50] cursor-pointer"
-                />
-              </label>
-            </div>
-            <div className="bg-white p-4 rounded-md shadow-md mb-4">
-              <label className="block text-sm font-medium text-[#008E50] mb-2">
-                Name
-              </label>
-              <input
-                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                value={alumniDetails.name}
-                onChange={handleInputChange}
-              />
-            </div>
+              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full opacity-0 hover:opacity-100 transition-opacity">
+                <span className="text-white text-sm font-medium">
+                  Edit Photo
+                </span>
+              </div>
+            </label>
+            <button
+              type="button"
+              onClick={handleRemovePhoto}
+              className="mt-2 text-sm text-[#008E50] hover:underline focus:outline-none"
+            >
+              Remove Photo
+            </button>
+          </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white p-4 rounded-md shadow-md mb-4">
               <label className="block text-sm font-medium text-[#008E50] mb-2">
                 Date of Birth

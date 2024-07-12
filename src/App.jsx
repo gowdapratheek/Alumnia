@@ -19,6 +19,7 @@ import Student from "./pages/Student";
 import About from "./pages/About";
 import Alumnidetails from "./pages/Alumnidetails";
 import { AlumniProvider } from "./context/AlumniContext";
+import AllAlumni from "./pages/AllAlumni";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
             <Route path="/forget-password" element={<ForgetPassword />} />
             <Route path="/about" element={<About />} />
             <Route path="/alumni-details" element={<Alumnidetails />} />
+            <Route path="/all-alumni" element={<AllAlumni />} />
           </Routes>
         </AlumniProvider>
       </AuthProvider>

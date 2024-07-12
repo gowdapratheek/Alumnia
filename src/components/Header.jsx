@@ -38,9 +38,15 @@ function Header() {
               className="hover:text-[#1f6237] text-[#2b2b2b] cursor-pointer font-semibold tracking-wide"
             >
               Resources
+            </Link>{" "}
+            <Link
+              to="/events"
+              className="hover:text-[#1f6237] text-[#2b2b2b] cursor-pointer font-semibold tracking-wide"
+            >
+              Events
             </Link>
             <Link
-              to="/alumni-details"
+              to="/all-alumni"
               className="hover:text-[#1f6237] text-[#2b2b2b] cursor-pointer font-semibold tracking-wide"
             >
               Alumni
@@ -49,19 +55,7 @@ function Header() {
               to="/student-details"
               className="hover:text-[#1f6237] text-[#2b2b2b] cursor-pointer font-semibold tracking-wide"
             >
-              Student
-            </Link>
-            <Link
-              to="/events"
-              className="hover:text-[#1f6237] text-[#2b2b2b] cursor-pointer font-semibold tracking-wide"
-            >
-              Events
-            </Link>
-            <Link
-              to="/about"
-              className="hover:text-[#1f6237] text-[#2b2b2b] cursor-pointer font-semibold tracking-wide"
-            >
-              About us
+              Students
             </Link>
           </nav>
         </div>
@@ -134,12 +128,20 @@ function Header() {
               </Link>
             </li>
             <li>
+              {" "}
               <Link
-                to="/about"
-                onClick={toggleNav}
+                to="/alumni-details"
                 className="hover:text-[#1f6237] text-[#2b2b2b] cursor-pointer font-semibold tracking-wide"
               >
-                About us
+                Alumni
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/student-details"
+                className="hover:text-[#1f6237] text-[#2b2b2b] cursor-pointer font-semibold tracking-wide"
+              >
+                Students
               </Link>
             </li>
             <li>
