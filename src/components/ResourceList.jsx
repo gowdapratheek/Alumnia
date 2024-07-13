@@ -34,7 +34,7 @@ const ResourceList = () => {
             </div>
             <div className="flex-shrink-0 flex items-center mt-2 md:mt-0 md:ml-4">
               <button
-                className="bg-blue-500 text-white py-2 px-4 rounded-lg"
+                className="bg-[#008e50] text-white py-2 px-4 rounded-lg"
                 onClick={() => handleViewDetails(resource._id)}
               >
                 View Details

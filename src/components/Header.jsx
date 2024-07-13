@@ -52,7 +52,7 @@ function Header() {
               Alumni
             </Link>
             <Link
-              to="/student-details"
+              to="/all-student"
               className="hover:text-[#1f6237] text-[#2b2b2b] cursor-pointer font-semibold tracking-wide"
             >
               Students
@@ -138,7 +138,7 @@ function Header() {
             </li>
             <li>
               <Link
-                to="/student-details"
+                to="/all-student"
                 className="hover:text-[#1f6237] text-[#2b2b2b] cursor-pointer font-semibold tracking-wide"
               >
                 Students

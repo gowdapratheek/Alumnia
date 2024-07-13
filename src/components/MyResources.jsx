@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import useResource from "../context/UseResource"; // Ensure this path is correct
 
 const MyResources = () => {
@@ -38,7 +38,7 @@ const MyResources = () => {
             </div>
             <div className="flex-shrink-0 flex items-center mt-2 md:mt-0 md:ml-4">
               <button
-                className="bg-blue-500 text-white py-2 px-4 rounded-lg"
+                className="bg-[#008E50] text-white py-2 px-4 rounded-lg"
                 onClick={() => handleViewDetails(resource._id)}
                 disabled={loadingResource === resource._id}
               >

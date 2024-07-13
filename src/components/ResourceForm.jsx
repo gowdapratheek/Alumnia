@@ -48,7 +48,7 @@ const ResourceForm = ({
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
-          className="w-full px-3 py-2 border border-blue-500 rounded-md focus:outline-none focus:ring-1"
+          className="w-full px-3 py-2 border border-[#202020] rounded-md focus:outline-none focus:ring-1"
         />
       </div>
       <div className="mb-4">
@@ -60,7 +60,7 @@ const ResourceForm = ({
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
-          className="w-full px-3 py-2 border border-blue-500 rounded-md focus:outline-none focus:ring-1"
+          className="w-full px-3 py-2 border border-[#202020] rounded-md focus:outline-none focus:ring-1"
         />
       </div>
       <div className="mb-4">
@@ -70,20 +70,20 @@ const ResourceForm = ({
           placeholder="Enter URL"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          className="w-full px-3 py-2 border border-blue-500 rounded-md focus:outline-none focus:ring-1"
+          className="w-full px-3 py-2 border border-[#202020] rounded-md focus:outline-none focus:ring-1"
         />
       </div>
       <div className="mb-4">
         <label className="block text-gray-700 font-bold mb-2">
           Upload (jpeg,png,pdf,doc,csv. Max 10mb)
         </label>
-        <div className="relative w-full h-12 border border-blue-500 rounded-md">
+        <div className="relative w-full h-12 border border-[#202020] rounded-md">
           <input
             type="file"
             onChange={handleFileChange}
             className="w-full h-full opacity-0 absolute z-10 cursor-pointer"
           />
-          <div className="w-full h-full flex items-center justify-center text-blue-500 cursor-pointer">
+          <div className="w-full h-full flex items-center justify-center text-[#202020] cursor-pointer">
             Browse Item
           </div>
         </div>
@@ -129,9 +129,9 @@ const ResourceForm = ({
               key={keyword}
               className={`px-3 py-2 border ${
                 keywords.includes(keyword)
-                  ? "bg-blue-500 text-white"
-                  : "border-blue-500 text-blue-500"
-              } rounded-md hover:bg-blue-500 hover:text-white focus:outline-none`}
+                  ? "bg-[#008E50] text-white"
+                  : "border-[#008E50] text-[#202020]"
+              } rounded-md hover:bg-[#008E50] hover:text-white focus:outline-none`}
               onClick={() => handleKeywordClick(keyword)}
             >
               {keyword}
@@ -146,7 +146,7 @@ const ResourceForm = ({
             {keywords.map((kw) => (
               <span
                 key={kw}
-                className="px-3 py-1 bg-blue-500 text-white rounded-md flex items-center"
+                className="px-3 py-1 bg-[#008E50] text-white rounded-md flex items-center"
               >
                 {kw}{" "}
                 <button
@@ -163,7 +163,7 @@ const ResourceForm = ({
       )}
       <button
         type="submit"
-        className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-1"
+        className="w-full bg-[#008E50] text-white py-2 rounded-md hover:bg-[#006337] focus:outline-none focus:ring-1"
       >
         Upload Resource
       </button>

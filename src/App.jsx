@@ -15,7 +15,7 @@ import ForgetPassword from "./pages/ForgetPassword";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Alumni from "./pages/Alumni";
-import Student from "./pages/Student";
+import Student from "./pages/studentDetials/Student";
 import About from "./pages/About";
 import Alumnidetails from "./pages/Alumnidetails";
 import { AlumniProvider } from "./context/AlumniContext";
@@ -24,49 +24,59 @@ import { ResourceProvider } from "./context/ResourceContext";
 import UploadResourcePage from "./pages/UploadResourcePage";
 import ResourcesPage from "./pages/ResourcesPage";
 import ResourceDetail from "./pages/ResourceDetail";
+import Studentdetails from "./pages/studentDetials/StudentDetails";
+import AllStudent from "./pages/studentDetials/AllStudent";
+import { StudentProvider } from "./context/StudentContext";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
     <div className="App">
       <AuthProvider>
         <AlumniProvider>
-          <ResourceProvider>
-            <ToastContainer
-              position="top-right"
-              autoClose={3000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-            />
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route path="/header" element={<Header />} />
-              <Route path="/footer" element={<Footer />} />
-              <Route path="/*" element={<Err />} />
-              <Route path="/who" element={<Who />} />
-              <Route path="/alumni" element={<Alumni />} />
-              <Route path="/student" element={<Student />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/faq" element={<Faqs />} />
-              <Route path="/events" element={<EventOptions />} />
-              <Route path="/uploadEvent" element={<UploadEvent />} />
-              <Route path="/previousEvents" element={<PreviousEvents />} />
-              <Route path="/forget-password" element={<ForgetPassword />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/alumni-details" element={<Alumnidetails />} />
-              <Route path="/all-alumni" element={<AllAlumni />} />
+          <StudentProvider>
+            <ResourceProvider>
+              <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+              />
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route path="/header" element={<Header />} />
+                <Route path="/footer" element={<Footer />} />
+                <Route path="/*" element={<Err />} />
+                <Route path="/who" element={<Who />} />
+                <Route path="/alumni" element={<Alumni />} />
+                <Route path="/student" element={<Student />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/faq" element={<Faqs />} />
+                <Route path="/events" element={<EventOptions />} />
+                <Route path="/uploadEvent" element={<UploadEvent />} />
+                <Route path="/previousEvents" element={<PreviousEvents />} />
+                <Route path="/forget-password" element={<ForgetPassword />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
 
-              <Route path="/upload" element={<UploadResourcePage />} />
-              <Route path="/resources" element={<ResourcesPage />} />
-              <Route path="/resources/:id" element={<ResourceDetail />} />
-              
-            </Routes>
-          </ResourceProvider>
+                <Route path="/alumni-details" element={<Alumnidetails />} />
+                <Route path="/all-alumni" element={<AllAlumni />} />
+
+                <Route path="/student-details" element={<Studentdetails />} />
+                <Route path="/all-student" element={<AllStudent />} />
+
+                <Route path="/upload" element={<UploadResourcePage />} />
+                <Route path="/resources" element={<ResourcesPage />} />
+                <Route path="/resources/:id" element={<ResourceDetail />} />
+              </Routes>
+            </ResourceProvider>
+          </StudentProvider>
         </AlumniProvider>
       </AuthProvider>
     </div>

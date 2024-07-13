@@ -33,7 +33,7 @@ const ResourcesPage = () => {
 
         {userType === "Alumni" && (
           <button
-            className="bg-blue-600 text-white py-2 px-4 rounded-[5px] hover:bg-blue-700 transition duration-300 mb-6"
+            className="bg-[#008e50] text-white py-2 px-4 rounded-[5px] hover:bg-[#006337] transition duration-300 mb-6"
             onClick={handleClick}
           >
             Upload Resource
