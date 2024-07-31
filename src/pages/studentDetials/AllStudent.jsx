@@ -1,4 +1,4 @@
-// src/components/AllStudents.jsx
+// src/components/AllStudent.jsx
 import { useContext, useEffect } from "react";
 import StudentContext from "../../context/StudentContext";
 import Header from "../../components/Header";
@@ -64,18 +64,18 @@ const AllStudent = () => {
                   </div>
                   <div className="flex justify-between mb-2">
                     <span className="text-sm font-medium text-gray-700">
-                      School:
+                      Company:
                     </span>
                     <span className="text-sm text-gray-900">
-                      {student.studentDetails.schoolName}
+                      {student.studentDetails.companyName}
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-sm font-medium text-gray-700">
-                      Grade:
+                      Role:
                     </span>
                     <span className="text-sm text-gray-900">
-                      {student.studentDetails.grade}
+                      {student.studentDetails.role}
                     </span>
                   </div>
                 </div>

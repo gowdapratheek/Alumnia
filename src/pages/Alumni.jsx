@@ -7,7 +7,7 @@ import AlumniContext from "../context/AlumniContext.jsx";
 import { useNavigate } from "react-router-dom";
 
 const Alumni = () => {
-  const { alumniDetails, setAlumniDetails, user } = useContext(AlumniContext);
+  const { alumniDetails, setAlumniDetails } = useContext(AlumniContext);
   const navigate = useNavigate();
   const [tempPhoto, setTempPhoto] = useState(
     alumniDetails.photo || "/default-profile.png"
@@ -56,10 +56,12 @@ const Alumni = () => {
       photo: tempPhoto,
     }));
     try {
+      const userEmail = localStorage.getItem("userEmail");
+
       const response = await axios.put(
         "http://localhost:5454/api/update-alumni-details",
         {
-          email: user.email,
+          email: userEmail,
           alumniDetails: {
             ...alumniDetails,
             photo: tempPhoto,

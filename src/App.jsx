@@ -6,9 +6,9 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Who from "./pages/Who";
 import Footer from "./components/Footer";
-import EventOptions from "./pages/EventOptions";
-import PreviousEvents from "./pages/PreviousEvents";
-import UploadEvent from "./pages/UploadEvent";
+import EventOptions from "./pages/eventsDeatails/EventOptions";
+import PreviousEvents from "./pages/eventsDeatails/PreviousEvents";
+import UploadEvent from "./pages/eventsDeatails/UploadEvent";
 import Faqs from "./pages/Faqs";
 import { AuthProvider } from "./context/AuthContext/AuthContext";
 import ForgetPassword from "./pages/ForgetPassword";
@@ -28,6 +28,8 @@ import Studentdetails from "./pages/studentDetials/StudentDetails";
 import AllStudent from "./pages/studentDetials/AllStudent";
 import { StudentProvider } from "./context/StudentContext";
 import Contact from "./pages/Contact";
+import AlumniEvents from "./pages/eventsDeatails/AlumniEvents";
+import CollegeEvents from "./pages/eventsDeatails/CollegeEvents";
 
 function App() {
   return (
@@ -58,9 +60,13 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/faq" element={<Faqs />} />
+
                 <Route path="/events" element={<EventOptions />} />
                 <Route path="/uploadEvent" element={<UploadEvent />} />
                 <Route path="/previousEvents" element={<PreviousEvents />} />
+                <Route path="/alumniEvents" element={<AlumniEvents />} />
+                <Route path="/collegeEvents" element={<CollegeEvents />} />
+
                 <Route path="/forget-password" element={<ForgetPassword />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />

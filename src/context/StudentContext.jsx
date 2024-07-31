@@ -16,9 +16,9 @@ export const StudentProvider = ({ children }) => {
       github: "",
       linkedin: "",
     },
-    schoolName: "",
-    grade: "",
-    locationOfSchool: {
+    companyName: "",
+    role: "",
+    locationOfCompany: {
       address: "",
       state: "",
       country: "",
@@ -60,9 +60,7 @@ export const StudentProvider = ({ children }) => {
 
   const fetchAllStudentDetails = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:5454/api/all-students"
-      );
+      const response = await axios.get("http://localhost:5454/api/all-student");
       if (response.data.success) {
         setAllStudentDetails(response.data.data);
       }

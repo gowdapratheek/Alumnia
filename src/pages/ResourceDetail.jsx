@@ -24,48 +24,68 @@ function ResourceDetail() {
     );
   }
 
-  // Ensure selectedResource.tags is initialized
-  const tags = selectedResource.tags || [];
+  const tags = selectedResource?.tags || [];
 
   return (
     <>
       <Header />
-      <div className="container mx-auto p-6 mt-[15vh] bg-white shadow-md rounded-lg">
-        <div className="flex items-center mb-6">
-          {selectedResource.photo && (
+      <div className="container mx-auto p-6 mt-[30vh] bg-white shadow-md rounded-lg max-w-4xl">
+        <div className="flex items-center mb-6 justify-center">
+          {selectedResource?.photo && (
             <img
               src={selectedResource.photo}
-              alt="Resource"
+              alt={`${selectedResource.title} Thumbnail`}
               className="w-16 h-16 rounded-full mr-4"
             />
           )}
           <div>
-            <h1 className="text-3xl font-bold mb-1">
-              {selectedResource.title}
+            <h1 className="text-3xl font-bold mb-1 text-center">
+              {selectedResource?.title}
             </h1>
-            <p className="text-gray-700 text-sm">{selectedResource.url}</p>
+            {selectedResource?.url && (
+              <p className="text-gray-700 text-sm text-center">
+                URL:{" "}
+                <a
+                  href={selectedResource.url}
+                  className="text-blue-500 underline"
+                  aria-label={`Link to ${selectedResource.title}`}
+                >
+                  {selectedResource.url}
+                </a>
+              </p>
+            )}
           </div>
         </div>
-        <p className="text-gray-700 mb-4">{selectedResource.description}</p>
-        {selectedResource.file && (
-          <a
-            href={selectedResource.file}
-            download
-            className="text-blue-500 underline mb-4 block"
-          >
-            Download File
-          </a>
+        {selectedResource?.description && (
+          <p className="text-gray-700 mb-4 text-center">
+            {selectedResource.description}
+          </p>
         )}
-        <div className="flex items-center mb-4">
-          <p className="font-medium mr-2">Uploaded by:</p>
-          <p>{selectedResource.uploadedBy.name}</p>
+        {selectedResource?.file && (
+          <div className="text-center mb-4">
+            <a
+              href={selectedResource.file}
+              download
+              className="text-blue-500 underline"
+            >
+              Download File
+            </a>
+          </div>
+        )}
+        <div className="flex flex-col items-center mb-4">
+          {selectedResource?.uploadedBy?.name && (
+            <p className="font-medium mb-2">
+              Uploaded by: {selectedResource.uploadedBy.name}
+            </p>
+          )}
+          {selectedResource?.createdAt && (
+            <p className="font-medium">
+              Created At:{" "}
+              {new Date(selectedResource.createdAt).toLocaleString()}
+            </p>
+          )}
         </div>
-        <div className="flex items-center mb-4">
-          <p className="font-medium mr-2">Created At:</p>
-          <p>{new Date(selectedResource.createdAt).toLocaleString()}</p>
-        </div>
-        {/* Render tags if they exist */}
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap justify-center">
           {tags.map((tag, index) => (
             <span
               key={index}

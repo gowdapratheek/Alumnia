@@ -1,8 +1,8 @@
 // src/pages/Studentdetails.jsx
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import StudentContext from "../../context/StudentContext.jsx";
-import Header from "../../components/Header.jsx";
+import StudentContext from "../../context/StudentContext";
+import Header from "../../components/Header";
 
 function Studentdetails() {
   const { studentDetails, user } = useContext(StudentContext);
@@ -41,6 +41,7 @@ function Studentdetails() {
               DOB:
             </label>
             <p className="mt-1 text-[#202020]">{studentDetails.dob}</p>
+            {/* /////////////////////////////////////////// */}
           </div>
           <div className="bg-white p-4 rounded-md shadow-md">
             <label className="block text-sm font-medium text-[#008E50]">
@@ -74,22 +75,22 @@ function Studentdetails() {
           </div>
           <div className="bg-white p-4 rounded-md shadow-md">
             <label className="block text-sm font-medium text-[#008E50]">
-              School Name:
+              Company Name:
             </label>
-            <p className="mt-1 text-[#202020]">{studentDetails.schoolName}</p>
+            <p className="mt-1 text-[#202020]">{studentDetails.companyName}</p>
           </div>
           <div className="bg-white p-4 rounded-md shadow-md">
             <label className="block text-sm font-medium text-[#008E50]">
-              Grade:
+              Role:
             </label>
-            <p className="mt-1 text-[#202020]">{studentDetails.grade}</p>
+            <p className="mt-1 text-[#202020]">{studentDetails.role}</p>
           </div>
           <div className="bg-white p-4 rounded-md shadow-md">
             <label className="block text-sm font-medium text-[#008E50]">
               Address:
             </label>
             <p className="mt-1 text-[#202020]">
-              {studentDetails.locationOfSchool.address}
+              {studentDetails.locationOfCompany.address}
             </p>
           </div>
           <div className="bg-white p-4 rounded-md shadow-md">
@@ -97,7 +98,7 @@ function Studentdetails() {
               State:
             </label>
             <p className="mt-1 text-[#202020]">
-              {studentDetails.locationOfSchool.state}
+              {studentDetails.locationOfCompany.state}
             </p>
           </div>
           <div className="bg-white p-4 rounded-md shadow-md">
@@ -105,7 +106,7 @@ function Studentdetails() {
               Country:
             </label>
             <p className="mt-1 text-[#202020]">
-              {studentDetails.locationOfSchool.country}
+              {studentDetails.locationOfCompany.country}
             </p>
           </div>
           <div className="bg-white p-4 rounded-md shadow-md">
@@ -113,7 +114,7 @@ function Studentdetails() {
               Pin Code:
             </label>
             <p className="mt-1 text-[#202020]">
-              {studentDetails.locationOfSchool.pinCode}
+              {studentDetails.locationOfCompany.pinCode}
             </p>
           </div>
         </div>

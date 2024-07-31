@@ -49,14 +49,16 @@ const ResourcesPage = () => {
           >
             All Resources
           </button>
-          <button
-            className={`${
-              activeTab === "my" ? "font-bold border-b-2 border-black" : ""
-            } pb-2`}
-            onClick={() => setActiveTab("my")}
-          >
-            Resources Uploaded by me
-          </button>
+          {userType === "Alumni" && (
+            <button
+              className={`${
+                activeTab === "my" ? "font-bold border-b-2 border-black" : ""
+              } pb-2`}
+              onClick={() => setActiveTab("my")}
+            >
+              Resources Uploaded by me
+            </button>
+          )}
         </div>
 
         <div className="mt-4">

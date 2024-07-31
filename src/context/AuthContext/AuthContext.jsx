@@ -39,6 +39,7 @@ export const AuthProvider = ({ children }) => {
         setUsermail(email);
         setLoggedIn(true);
         localStorage.setItem("userEmail", email);
+        localStorage.setItem("userType", response.data.result.usertype);
         toast.success("Login successful!", {
           autoClose: 2000,
           onClose: () => navigate("/"),

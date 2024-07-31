@@ -19,13 +19,17 @@ const ResourceList = () => {
               <h3 className="text-xl font-semibold mb-2">{resource.title}</h3>
               <p className="text-gray-700 mb-2">{resource.description}</p>
               <div className="flex items-center mb-2">
-                <img
-                  src={resource.uploadedBy.alumniDetailsId.photo} // Use the correct path to the photo
-                  alt="avatar"
-                  className="w-10 h-10 rounded-full mr-2"
-                />
+                {resource.uploadedBy && resource.uploadedBy.alumniDetailsId && (
+                  <img
+                    src={resource.uploadedBy.alumniDetailsId.photo || ""} // Use the correct path to the photo
+                    alt="avatar"
+                    className="w-10 h-10 rounded-full mr-2"
+                  />
+                )}
                 <div>
-                  <p className="font-medium">{resource.uploadedBy.name}</p>
+                  <p className="font-medium">
+                    {resource.uploadedBy ? resource.uploadedBy.name : "Unknown"}
+                  </p>
                   <p className="text-gray-500 text-sm">
                     {new Date(resource.createdAt).toLocaleString()}
                   </p>
