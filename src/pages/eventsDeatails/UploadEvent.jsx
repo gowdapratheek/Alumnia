@@ -21,7 +21,7 @@ const UploadEvent = ({
   return (
     <>
       <Header />
-      <div className="bg-[#edf3f1] min-h-screen flex justify-center items-center">
+      <div className="bg-[#edf3f1] min-h-screen flex justify-center items-center mt-[10vh] ">
         <div className="max-w-xl mx-auto p-6 bg-white shadow-md rounded-lg">
           <h2 className="text-2xl font-bold mb-4 text-center">Upload Event</h2>
           <form onSubmit={handleSubmit} className="flex flex-col space-y-4">

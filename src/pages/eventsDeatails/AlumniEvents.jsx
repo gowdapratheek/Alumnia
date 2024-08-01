@@ -9,7 +9,7 @@ function AlumniEvents() {
       <div className="bg-[#edf3f1] min-h-screen py-12 px-6 mt-[10vh]">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-[#008E50] mb-4">
-            College Events
+            Alumni Events
           </h1>
           <Link
             to="/uploadEvent"

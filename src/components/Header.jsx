@@ -29,7 +29,7 @@ function Header() {
           >
             <Link
               to="/"
-              className="hover:text-[#1f6237] text-[#2b2b2b] cursor-pointer font-semibold tracking-wide"
+              className="hover:text-[#1f6237] text-[#2b2b2b] cursor-pointer font-semibkjhghghgold tracking-wide"
             >
               Home
             </Link>
