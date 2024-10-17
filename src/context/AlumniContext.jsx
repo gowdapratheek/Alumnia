@@ -42,7 +42,7 @@ export const AlumniProvider = ({ children }) => {
     const fetchAlumniDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5454/api/get-alumni-details?email=${userEmail}`
+          `https://alumniaserver.onrender.com/api/get-alumni-details?email=${userEmail}`
         );
         if (response.data.success) {
           setAlumniDetails(response.data.data.alumniDetails);
@@ -60,7 +60,9 @@ export const AlumniProvider = ({ children }) => {
 
   const fetchAllAlumniDetails = async () => {
     try {
-      const response = await axios.get("http://localhost:5454/api/all-alumni");
+      const response = await axios.get(
+        "https://alumniaserver.onrender.com/api/all-alumni"
+      );
       if (response.data.success) {
         setAllAlumniDetails(response.data.data);
       }
@@ -74,7 +76,7 @@ export const AlumniProvider = ({ children }) => {
     console.log(email);
     try {
       const response = await axios.get(
-        `http://localhost:5454/api/get-alumni-details?email=${email}`
+        `https://alumniaserver.onrender.com/api/get-alumni-details?email=${email}`
       );
       if (response.data.success) {
         setAlumniDetails(response.data.data.alumniDetails);

@@ -59,7 +59,7 @@ const Alumni = () => {
       const userEmail = localStorage.getItem("userEmail");
 
       const response = await axios.put(
-        "http://localhost:5454/api/update-alumni-details",
+        "https://alumniaserver.onrender.com/api/update-alumni-details",
         {
           email: userEmail,
           alumniDetails: {

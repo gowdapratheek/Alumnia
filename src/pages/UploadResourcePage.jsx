@@ -26,11 +26,15 @@ const UploadResourcePage = () => {
 
     try {
       console.log(requestData);
-      await axios.post("http://localhost:5454/r/resource", requestData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.post(
+        "https://alumniaserver.onrender.com/r/resource",
+        requestData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       toast.success("Resource added successfully!");
       navigate("/resources");
     } catch (error) {

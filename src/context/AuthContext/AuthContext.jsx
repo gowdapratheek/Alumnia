@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
     const data = { email: usermail, password };
     try {
       const response = await axios.post(
-        "http://localhost:5454/user/login",
+        "https://alumniaserver.onrender.com/user/login",
         data
       );
 
@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
     const data = { name: username, email: usermail, password, otp };
     try {
       const response = await axios.post(
-        "http://localhost:5454/user/register",
+        "https://alumniaserver.onrender.com/user/register",
         data
       );
 
@@ -82,7 +82,7 @@ export const AuthProvider = ({ children }) => {
     const data = { email: usermail };
     try {
       const response = await axios.post(
-        "http://localhost:5454/user/send-register-otp",
+        "https://alumniaserver.onrender.com/user/send-register-otp",
         data
       );
 
@@ -114,7 +114,7 @@ export const AuthProvider = ({ children }) => {
   const sendForgetPasswordOTP = async (email) => {
     try {
       const response = await axios.post(
-        "http://localhost:5454/user/send-forget-password-otp",
+        "https://alumniaserver.onrender.com/user/send-forget-password-otp",
         { email }
       );
 
@@ -131,7 +131,7 @@ export const AuthProvider = ({ children }) => {
   const changePassword = async (email, otp, newPassword) => {
     try {
       const response = await axios.put(
-        "http://localhost:5454/user/change-password",
+        "https://alumniaserver.onrender.com/user/change-password",
         { email, otp, password: newPassword }
       );
       return response.data;

@@ -23,7 +23,7 @@ function Who() {
 
     try {
       const response = await axios.put(
-        "http://localhost:5454/user/update-usertype",
+        "https://alumniaserver.onrender.com/user/update-usertype",
         {
           email: usermail,
           userType: type,

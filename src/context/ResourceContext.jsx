@@ -15,7 +15,7 @@ export const ResourceProvider = ({ children }) => {
   useEffect(() => {
     const fetchResources = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5454/r/resources");
+        const { data } = await axios.get("https://alumniaserver.onrender.com/r/resources");
         setResources(data);
       } catch (err) {
         console.error("Error fetching resources:", err);
@@ -25,7 +25,7 @@ export const ResourceProvider = ({ children }) => {
     const fetchMyResources = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5454/r/my-resources?email=${userEmail}`
+          `https://alumniaserver.onrender.com/r/my-resources?email=${userEmail}`
         );
         setMyResources(data);
       } catch (err) {
@@ -40,7 +40,7 @@ export const ResourceProvider = ({ children }) => {
   const fetchResourceById = async (id) => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5454/r/resource/${id}`
+        `https://alumniaserver.onrender.com/r/resource/${id}`
       );
       setSelectedResource(data);
       navigate(`/resources/${id}`);
